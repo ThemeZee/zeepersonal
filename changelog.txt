@@ -2,6 +2,10 @@
 zeePersonal Changelog
 ===================================
 
+Version 1.4.1
+-----------------------------------
+- changed theme URL in style.css
+
 Version 1.4
 -----------------------------------
 - added theme hooks for better child theme support

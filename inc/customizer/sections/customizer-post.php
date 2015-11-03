@@ -4,7 +4,7 @@
  *
  * Register Post Settings section, settings and controls for Theme Customizer
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
 
@@ -13,71 +13,71 @@
  *
  * @param object $wp_customize / Customizer Object
  */
-function merlin_customize_register_post_settings( $wp_customize ) {
+function zeepersonal_customize_register_post_settings( $wp_customize ) {
 
 	// Add Sections for Post Settings
-	$wp_customize->add_section( 'merlin_section_post', array(
-        'title'    => esc_html__( 'Post Settings', 'merlin' ),
+	$wp_customize->add_section( 'zeepersonal_section_post', array(
+        'title'    => esc_html__( 'Post Settings', 'zeepersonal' ),
         'priority' => 30,
-		'panel' => 'merlin_options_panel' 
+		'panel' => 'zeepersonal_options_panel' 
 		)
 	);
 	
 	// Add Title for latest posts setting
-	$wp_customize->add_setting( 'merlin_theme_options[latest_posts_title]', array(
-        'default'           => esc_html__( 'Latest Posts', 'merlin' ),
+	$wp_customize->add_setting( 'zeepersonal_theme_options[latest_posts_title]', array(
+        'default'           => esc_html__( 'Latest Posts', 'zeepersonal' ),
 		'type'           	=> 'option',
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_html'
 		)
 	);
-    $wp_customize->add_control( 'merlin_control_latest_posts_title', array(
-        'label'    => esc_html__( 'Title above Latest Posts', 'merlin' ),
-        'section'  => 'merlin_section_post',
-        'settings' => 'merlin_theme_options[latest_posts_title]',
+    $wp_customize->add_control( 'zeepersonal_control_latest_posts_title', array(
+        'label'    => esc_html__( 'Title above Latest Posts', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[latest_posts_title]',
         'type'     => 'text',
 		'priority' => 1
 		)
 	);
 
 	// Add Settings and Controls for post content
-	$wp_customize->add_setting( 'merlin_theme_options[post_content]', array(
+	$wp_customize->add_setting( 'zeepersonal_theme_options[post_content]', array(
         'default'           => 'excerpt',
 		'type'           	=> 'option',
         'transport'         => 'refresh',
-        'sanitize_callback' => 'merlin_sanitize_post_content'
+        'sanitize_callback' => 'zeepersonal_sanitize_post_content'
 		)
 	);
-    $wp_customize->add_control( 'merlin_control_post_content', array(
-        'label'    => esc_html__( 'Post length on archives', 'merlin' ),
-        'section'  => 'merlin_section_post',
-        'settings' => 'merlin_theme_options[post_content]',
+    $wp_customize->add_control( 'zeepersonal_control_post_content', array(
+        'label'    => esc_html__( 'Post length on archives', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[post_content]',
         'type'     => 'radio',
 		'priority' => 2,
         'choices'  => array(
-            'index' => esc_html__( 'Show full posts', 'merlin' ),
-            'excerpt' => esc_html__( 'Show post excerpts', 'merlin' )
+            'index' => esc_html__( 'Show full posts', 'zeepersonal' ),
+            'excerpt' => esc_html__( 'Show post excerpts', 'zeepersonal' )
 			)
 		)
 	);
 	
 	// Add Setting and Control for Excerpt Length
-	$wp_customize->add_setting( 'merlin_theme_options[excerpt_length]', array(
+	$wp_customize->add_setting( 'zeepersonal_theme_options[excerpt_length]', array(
         'default'           => 30,
 		'type'           	=> 'option',
         'transport'         => 'refresh',
         'sanitize_callback' => 'absint'
 		)
 	);
-    $wp_customize->add_control( 'merlin_control_excerpt_length', array(
-        'label'    => esc_html__( 'Excerpt Length', 'merlin' ),
-        'section'  => 'merlin_section_post',
-        'settings' => 'merlin_theme_options[excerpt_length]',
+    $wp_customize->add_control( 'zeepersonal_control_excerpt_length', array(
+        'label'    => esc_html__( 'Excerpt Length', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[excerpt_length]',
         'type'     => 'text',
-		'active_callback' => 'merlin_control_post_content_callback',
+		'active_callback' => 'zeepersonal_control_post_content_callback',
 		'priority' => 3
 		)
 	);
 	
 }
-add_action( 'customize_register', 'merlin_customize_register_post_settings' );
+add_action( 'customize_register', 'zeepersonal_customize_register_post_settings' );

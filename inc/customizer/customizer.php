@@ -2,7 +2,7 @@
 /**
  * Implement theme options in the Customizer
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
  
@@ -16,22 +16,20 @@ require( get_template_directory() . '/inc/customizer/sections/customizer-general
 require( get_template_directory() . '/inc/customizer/sections/customizer-post.php' );
 require( get_template_directory() . '/inc/customizer/sections/customizer-postmeta.php' );
 require( get_template_directory() . '/inc/customizer/sections/customizer-images.php' );
-require( get_template_directory() . '/inc/customizer/sections/customizer-slider.php' );
-require( get_template_directory() . '/inc/customizer/sections/customizer-upgrade.php' );
 
 
 /**
  * Registers Theme Options panel and sets up some WordPress core settings
  *
  */
-function merlin_customize_register_options( $wp_customize ) {
+function zeepersonal_customize_register_options( $wp_customize ) {
 
 	// Add Theme Options Panel
-	$wp_customize->add_panel( 'merlin_options_panel', array(
+	$wp_customize->add_panel( 'zeepersonal_options_panel', array(
 		'priority'       => 180,
 		'capability'     => 'edit_theme_options',
 		'theme_supports' => '',
-		'title'          => esc_html__( 'Theme Options', 'merlin' ),
+		'title'          => esc_html__( 'Theme Options', 'zeepersonal' ),
 		'description'    => '',
 	) );
 	
@@ -41,27 +39,27 @@ function merlin_customize_register_options( $wp_customize ) {
 	
 	// Change default background section
 	$wp_customize->get_control( 'background_color'  )->section   = 'background_image';
-	$wp_customize->get_section( 'background_image'  )->title     = esc_html__( 'Background', 'merlin' );
+	$wp_customize->get_section( 'background_image'  )->title     = esc_html__( 'Background', 'zeepersonal' );
 	
-} // merlin_customize_register_options()
-add_action( 'customize_register', 'merlin_customize_register_options' );
+} // zeepersonal_customize_register_options()
+add_action( 'customize_register', 'zeepersonal_customize_register_options' );
 
 
 /**
  * Embed JS file to make Theme Customizer preview reload changes asynchronously.
  *
  */
-function merlin_customize_preview_js() {
-	wp_enqueue_script( 'merlin-customizer-js', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20150723', true );
+function zeepersonal_customize_preview_js() {
+	wp_enqueue_script( 'zeepersonal-customizer-js', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20150723', true );
 }
-add_action( 'customize_preview_init', 'merlin_customize_preview_js' );
+add_action( 'customize_preview_init', 'zeepersonal_customize_preview_js' );
 
 
 /**
  * Embed CSS styles for the theme options in the Customizer
  *
  */
-function merlin_customize_preview_css() {
-	wp_enqueue_style( 'merlin-customizer-css', get_template_directory_uri() . '/css/customizer.css', array(), '20150723' );
+function zeepersonal_customize_preview_css() {
+	wp_enqueue_style( 'zeepersonal-customizer-css', get_template_directory_uri() . '/css/customizer.css', array(), '20150723' );
 }
-add_action( 'customize_controls_print_styles', 'merlin_customize_preview_css' );
+add_action( 'customize_controls_print_styles', 'zeepersonal_customize_preview_css' );

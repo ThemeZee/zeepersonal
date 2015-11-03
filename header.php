@@ -4,11 +4,11 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package Merlin
+ * @package zeePersonal
  */
  
 // Get Theme Options from Database
-$theme_options = merlin_theme_options();
+$theme_options = zeepersonal_theme_options();
 	
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -26,7 +26,7 @@ $theme_options = merlin_theme_options();
 
 	<div id="page" class="hfeed site">
 		
-		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'merlin' ); ?></a>
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'zeepersonal' ); ?></a>
 		
 		<header id="masthead" class="site-header clearfix" role="banner">
 			
@@ -40,7 +40,7 @@ $theme_options = merlin_theme_options();
 						
 				<div id="logo" class="site-branding clearfix">
 				
-					<?php do_action('merlin_site_title'); ?>
+					<?php do_action('zeepersonal_site_title'); ?>
 				
 				</div><!-- .site-branding -->
 				
@@ -65,13 +65,13 @@ $theme_options = merlin_theme_options();
 						'container' => false, 
 						'menu_class' => 'main-navigation-menu', 
 						'echo' => true, 
-						'fallback_cb' => 'merlin_default_menu')
+						'fallback_cb' => 'zeepersonal_default_menu')
 					);
 				?>
 			</nav><!-- #main-navigation -->
 			
 			<?php // Display Custom Header Image
-			merlin_header_image(); ?>
+			zeepersonal_header_image(); ?>
 		
 		</header><!-- #masthead -->
 		

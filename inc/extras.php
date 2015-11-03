@@ -2,16 +2,16 @@
 /**
  * Custom functions that are not template related
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
  
-if ( ! function_exists( 'merlin_default_menu' ) ) :
+if ( ! function_exists( 'zeepersonal_default_menu' ) ) :
 /**
  * Display default page as navigation if no custom menu was set
  *
  */
-function merlin_default_menu() {
+function zeepersonal_default_menu() {
 	
 	echo '<ul id="menu-main-navigation" class="main-navigation-menu menu">'. wp_list_pages('title_li=&echo=0') .'</ul>';
 	
@@ -25,10 +25,10 @@ endif;
  * @param array $classes Classes for the body element.
  * @return array
  */
-function merlin_body_classes( $classes ) {
+function zeepersonal_body_classes( $classes ) {
 	
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 		
 	// Switch Sidebar Layout to left
 	if ( isset($theme_options['layout']) and $theme_options['layout'] == 'left-sidebar' ) :
@@ -42,7 +42,7 @@ function merlin_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'merlin_body_classes' );
+add_filter( 'body_class', 'zeepersonal_body_classes' );
 
 
 /**
@@ -51,10 +51,10 @@ add_filter( 'body_class', 'merlin_body_classes' );
  * @param int $length Length of excerpt in number of words
  * @return int
  */
-function merlin_excerpt_length($length) {
+function zeepersonal_excerpt_length($length) {
 	
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 
 	// Return Excerpt Text
 	if ( isset($theme_options['excerpt_length']) and $theme_options['excerpt_length'] >= 0 ) :
@@ -63,7 +63,7 @@ function merlin_excerpt_length($length) {
 		return 30; // number of words
 	endif;
 }
-add_filter('excerpt_length', 'merlin_excerpt_length');
+add_filter('excerpt_length', 'zeepersonal_excerpt_length');
 
 
 /**
@@ -72,6 +72,6 @@ add_filter('excerpt_length', 'merlin_excerpt_length');
  * @param int $length Length of excerpt in number of words
  * @return int
  */
-function merlin_category_posts_excerpt_length($length) {
+function zeepersonal_category_posts_excerpt_length($length) {
     return 15;
 }

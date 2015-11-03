@@ -5,13 +5,13 @@
  * This file contains several template functions which are used to print out specific HTML markup
  * in the theme. You can override these template functions within your child theme.
  *
- * @package Merlin
+ * @package zeePersonal
  */
 	
 /**
  * Displays the site title in the header area
  */
-function merlin_site_title() { ?>
+function zeepersonal_site_title() { ?>
 
 	<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 		<h1 class="site-title"><?php bloginfo('name'); ?></h1>
@@ -19,14 +19,14 @@ function merlin_site_title() { ?>
 
 <?php
 }
-add_action( 'merlin_site_title', 'merlin_site_title' );
+add_action( 'zeepersonal_site_title', 'zeepersonal_site_title' );
 
 
-if ( ! function_exists( 'merlin_header_image' ) ):
+if ( ! function_exists( 'zeepersonal_header_image' ) ):
 /**
  * Displays the custom header image below the navigation menu
  */
-function merlin_header_image() {
+function zeepersonal_header_image() {
 		
 	// Don't display header image on template-magazine.php
 	if( is_page_template('template-magazine.php') )
@@ -36,7 +36,7 @@ function merlin_header_image() {
 	if( is_page() && has_post_thumbnail() ) :
 	?>
 		<div id="headimg" class="header-image featured-image-header">
-			<?php the_post_thumbnail('merlin-header-image'); ?>
+			<?php the_post_thumbnail('zeepersonal-header-image'); ?>
 		</div>
 <?php
 	// Check if there is a custom header image
@@ -52,14 +52,14 @@ function merlin_header_image() {
 endif;
 
 
-if ( ! function_exists( 'merlin_post_image_archives' ) ):
+if ( ! function_exists( 'zeepersonal_post_image_archives' ) ):
 /**
  * Displays the featured image on archive pages
  */
-function merlin_post_image_archives() {
+function zeepersonal_post_image_archives() {
 	
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 	
 	// Return early if no featured image should be displayed
 	if ( isset($theme_options['post_layout_archives']) and $theme_options['post_layout_archives'] == 'none' ) :
@@ -70,7 +70,7 @@ function merlin_post_image_archives() {
 	if ( isset($theme_options['post_layout_archives']) and $theme_options['post_layout_archives'] == 'left' ) : ?>
 
 		<a class="post-thumbnail-small" href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
-			<?php the_post_thumbnail( 'merlin-thumbnail-small' ); ?>
+			<?php the_post_thumbnail( 'zeepersonal-thumbnail-small' ); ?>
 		</a>
 
 <?php
@@ -84,18 +84,18 @@ function merlin_post_image_archives() {
 <?php
 	endif;
 
-} // merlin_post_image_archives()
+} // zeepersonal_post_image_archives()
 endif;
 
 
-if ( ! function_exists( 'merlin_post_image_single' ) ):
+if ( ! function_exists( 'zeepersonal_post_image_single' ) ):
 /**
  * Displays the featured image on single posts
  */
-function merlin_post_image_single() {
+function zeepersonal_post_image_single() {
 	
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 	
 	// Display Post Thumbnail if activated
 	if ( isset($theme_options['post_image_single']) and $theme_options['post_image_single'] == true ) :
@@ -104,17 +104,17 @@ function merlin_post_image_single() {
 
 	endif;
 
-} // merlin_post_image_single()
+} // zeepersonal_post_image_single()
 endif;
 
-if ( ! function_exists( 'merlin_entry_meta' ) ):	
+if ( ! function_exists( 'zeepersonal_entry_meta' ) ):	
 /**
  * Displays the date and author of posts
  */
-function merlin_entry_meta() {
+function zeepersonal_entry_meta() {
 
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 	
 	// Display Postmeta
 	if ( true == $theme_options['meta_date'] or true == $theme_options['meta_author'] ) : ?>
@@ -124,14 +124,14 @@ function merlin_entry_meta() {
 		<?php // Display Date unless user has deactivated it via settings
 		if ( true == $theme_options['meta_date'] ) :
 		
-			merlin_meta_date();
+			zeepersonal_meta_date();
 		
 		endif; 
 
 		// Display Author unless user has deactivated it via settings
 		if ( true == $theme_options['meta_author'] ) :
 		
-			merlin_meta_author();
+			zeepersonal_meta_author();
 		
 		endif; ?>
 		
@@ -139,15 +139,15 @@ function merlin_entry_meta() {
 		
 	<?php endif;
 
-} // merlin_entry_meta()
+} // zeepersonal_entry_meta()
 endif;
 
 
-if ( ! function_exists( 'merlin_meta_date' ) ):
+if ( ! function_exists( 'zeepersonal_meta_date' ) ):
 /**
  * Displays the post date
  */
-function merlin_meta_date() { 
+function zeepersonal_meta_date() { 
 
 	$time_string = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date published updated" datetime="%3$s">%4$s</time></a>',
 		esc_url( get_permalink() ),
@@ -156,42 +156,42 @@ function merlin_meta_date() {
 		esc_html( get_the_date() )
 	);
 
-	$posted_on = sprintf( esc_html_x( 'Posted on %s', 'post date', 'merlin' ), $time_string );
+	$posted_on = sprintf( esc_html_x( 'Posted on %s', 'post date', 'zeepersonal' ), $time_string );
 	
 	echo '<span class="meta-date">' . $posted_on . '</span>';
 
-}  // merlin_meta_date()
+}  // zeepersonal_meta_date()
 endif;
 
 
-if ( ! function_exists( 'merlin_meta_author' ) ):
+if ( ! function_exists( 'zeepersonal_meta_author' ) ):
 /**
  * Displays the post author
  */
-function merlin_meta_author() {  
+function zeepersonal_meta_author() {  
 	
 	$author_string = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>', 
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( esc_html__( 'View all posts by %s', 'merlin' ), get_the_author() ) ),
+		esc_attr( sprintf( esc_html__( 'View all posts by %s', 'zeepersonal' ), get_the_author() ) ),
 		esc_html( get_the_author() )
 	);
 	
-	$byline = sprintf( esc_html_x( 'by %s', 'post author', 'merlin' ), $author_string );
+	$byline = sprintf( esc_html_x( 'by %s', 'post author', 'zeepersonal' ), $author_string );
 	
 	echo '<span class="meta-author"> ' . $byline . '</span>';
 
-}  // merlin_meta_author()
+}  // zeepersonal_meta_author()
 endif;
 
 
-if ( ! function_exists( 'merlin_entry_tags' ) ):
+if ( ! function_exists( 'zeepersonal_entry_tags' ) ):
 /**
  * Displays the post tags on single post view
  */
-function merlin_entry_tags() {
+function zeepersonal_entry_tags() {
 	
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 	
 	// Get Tags
 	$tag_list = get_the_tag_list('', '');
@@ -207,18 +207,18 @@ function merlin_entry_tags() {
 <?php 
 	endif;
 
-} // merlin_entry_tags()
+} // zeepersonal_entry_tags()
 endif;
 
 
-if ( ! function_exists( 'merlin_entry_footer' ) ):
+if ( ! function_exists( 'zeepersonal_entry_footer' ) ):
 /**
  * Displays the category on comments on posts
  */	
-function merlin_entry_footer() { 
+function zeepersonal_entry_footer() { 
 
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 	
 	// Display Postmeta
 	if ( ( is_single() && $theme_options['footer_meta_single'] ) or ( ! is_single() && $theme_options['footer_meta_archives'] ) ) : ?>
@@ -233,7 +233,7 @@ function merlin_entry_footer() {
 		if ( comments_open() ) : ?>
 		
 			<span class="meta-comments">
-				<?php comments_popup_link( esc_html__( 'Leave a comment', 'merlin' ), esc_html__( 'One comment', 'merlin' ), esc_html__( '% comments', 'merlin' ) ); ?>
+				<?php comments_popup_link( esc_html__( 'Leave a comment', 'zeepersonal' ), esc_html__( 'One comment', 'zeepersonal' ), esc_html__( '% comments', 'zeepersonal' ) ); ?>
 			</span>
 	
 		<?php endif; ?>
@@ -242,18 +242,18 @@ function merlin_entry_footer() {
 		
 	<?php endif;
 	
-} // merlin_entry_footer()
+} // zeepersonal_entry_footer()
 endif;
 
 
-if ( ! function_exists( 'merlin_entry_meta_slider' ) ):
+if ( ! function_exists( 'zeepersonal_entry_meta_slider' ) ):
 /**
  * Displays date and author on slideshow posts
  */	
-function merlin_entry_meta_slider() { 
+function zeepersonal_entry_meta_slider() { 
 
 	// Get Theme Options from Database
-	$theme_options = merlin_theme_options();
+	$theme_options = zeepersonal_theme_options();
 	
 	// Display Postmeta
 	if ( true == $theme_options['meta_date'] or true == $theme_options['meta_author'] ) : ?>
@@ -281,7 +281,7 @@ function merlin_entry_meta_slider() {
 			<span class="meta-author">
 				<?php printf('<a href="%1$s" title="%2$s" rel="author">%3$s</a>', 
 						esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-						esc_attr( sprintf( esc_html__( 'View all posts by %s', 'merlin' ), get_the_author() ) ),
+						esc_attr( sprintf( esc_html__( 'View all posts by %s', 'zeepersonal' ), get_the_author() ) ),
 						get_the_author()
 					);
 				?>
@@ -293,28 +293,28 @@ function merlin_entry_meta_slider() {
 		
 	<?php endif; 
 
-} // merlin_entry_meta_slider()
+} // zeepersonal_entry_meta_slider()
 endif;
 
 
-if ( ! function_exists( 'merlin_more_link' ) ):
+if ( ! function_exists( 'zeepersonal_more_link' ) ):
 /**
  * Displays the more link on posts
  */
-function merlin_more_link() { ?>
+function zeepersonal_more_link() { ?>
 
-	<a href="<?php echo esc_url( get_permalink() ) ?>" class="more-link"><?php esc_html_e( 'Read more', 'merlin' ); ?></a>
+	<a href="<?php echo esc_url( get_permalink() ) ?>" class="more-link"><?php esc_html_e( 'Read more', 'zeepersonal' ); ?></a>
 
 <?php
 }
 endif;
 
 
-if ( ! function_exists( 'merlin_pagination' ) ):
+if ( ! function_exists( 'zeepersonal_pagination' ) ):
 /**
  * Displays pagination on archive pages
  */	
-function merlin_pagination() { 
+function zeepersonal_pagination() { 
 	
 	global $wp_query;
 
@@ -340,22 +340,22 @@ function merlin_pagination() {
 	<?php
 	endif;
 	
-} // merlin_pagination()
+} // zeepersonal_pagination()
 endif;
 
 
 /**
  * Displays credit link on footer line
  */	
-function merlin_footer_text() { ?>
+function zeepersonal_footer_text() { ?>
 
 	<span class="credit-link">
-		<?php printf( esc_html__( 'Powered by %1$s and %2$s.', 'merlin' ), 
+		<?php printf( esc_html__( 'Powered by %1$s and %2$s.', 'zeepersonal' ), 
 			'<a href="http://wordpress.org" title="WordPress">WordPress</a>',
-			'<a href="http://themezee.com/themes/merlin/" title="Merlin WordPress Theme">Merlin</a>'
+			'<a href="http://themezee.com/themes/zeepersonal/" title="zeePersonal WordPress Theme">zeePersonal</a>'
 		); ?>
 	</span>
 
 <?php
 }
-add_action( 'merlin_footer_text', 'merlin_footer_text' );
+add_action( 'zeepersonal_footer_text', 'zeepersonal_footer_text' );

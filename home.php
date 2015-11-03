@@ -4,13 +4,13 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Merlin
+ * @package zeePersonal
  */
  
 get_header(); 
 
 // Get Theme Options from Database
-$theme_options = merlin_theme_options();
+$theme_options = zeepersonal_theme_options();
 
 // Display Featured Post Slideshow if activated
 if ( isset($theme_options['slider_blog']) and $theme_options['slider_blog'] == true ) :
@@ -43,7 +43,7 @@ endif;
 				endwhile;
 
 				// Display Pagination	
-				merlin_pagination();
+				zeepersonal_pagination();
 
 			endif; ?>
 			

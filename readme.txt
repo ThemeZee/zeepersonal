@@ -1,4 +1,4 @@
-=== Merlin ===
+=== zeePersonal ===
 
 Contributors: themezee
 Tags: two-columns, light, blue, custom-background, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, custom-colors, full-width-template, sticky-post, threaded-comments, translation-ready, theme-options, fluid-layout, responsive-layout, one-column, left-sidebar, right-sidebar, three-columns, black, red, silver, white, green, gray
@@ -9,11 +9,11 @@ Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A Magazine WordPress theme called Merlin.
+A Magazine WordPress theme called zeePersonal.
 
 == Description ==
 
-Merlin is a beautiful designed Magazine WordPress theme with a responsive layout. The theme comes with a gorgeous Post Slider, Magazine Homepage template and a Header Widget area. Settings can be configured easily in the Customizer. 
+zeePersonal is a beautiful designed Magazine WordPress theme with a responsive layout. The theme comes with a gorgeous Post Slider, Magazine Homepage template and a Header Widget area. Settings can be configured easily in the Customizer. 
 
 == Installation ==
 	
@@ -38,7 +38,7 @@ Merlin is a beautiful designed Magazine WordPress theme with a responsive layout
 * fixed deprecating PHP4 style constructors notices in WordPress 4.3
 
 = 1.0.1 - July 30 2015 =
-* fixed Merlin Category Posts Widgets causing some warnings on post edit screen
+* fixed zeePersonal Category Posts Widgets causing some warnings on post edit screen
 
 = 1.0 - July 25 2015 =
 * Initial release

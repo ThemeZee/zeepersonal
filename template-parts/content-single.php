@@ -2,19 +2,19 @@
 /**
  * The template for displaying single posts
  *
- * @package Merlin
+ * @package zeePersonal
  */
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		
-		<?php merlin_post_image_single(); ?>
+		<?php zeepersonal_post_image_single(); ?>
 		
 		<header class="entry-header">
 			
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			
-			<?php merlin_entry_meta(); ?>
+			<?php zeepersonal_entry_meta(); ?>
 
 		</header><!-- .entry-header -->
 
@@ -26,9 +26,9 @@
 		
 		<footer class="entry-footer">
 			
-			<?php merlin_entry_tags(); ?>
+			<?php zeepersonal_entry_tags(); ?>
 			
-			<?php merlin_entry_footer(); ?>
+			<?php zeepersonal_entry_footer(); ?>
 			
 		</footer><!-- .entry-footer -->
 		

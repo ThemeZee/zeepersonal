@@ -4,7 +4,7 @@
  *
  * Used to validate the user input of the theme settings
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
 
@@ -14,7 +14,7 @@
  * @param string $value / Value of the setting
  * @return bool
  */
-function merlin_sanitize_checkbox( $value ) {
+function zeepersonal_sanitize_checkbox( $value ) {
 
 	if ( $value == 1) :
         return 1;
@@ -30,7 +30,7 @@ function merlin_sanitize_checkbox( $value ) {
  * @param string $value / Value of the setting
  * @return string
  */
-function merlin_sanitize_layout( $value ) {
+function zeepersonal_sanitize_layout( $value ) {
 
 	if ( ! in_array( $value, array( 'left-sidebar', 'right-sidebar' ), true ) ) :
         $value = 'right-sidebar';
@@ -46,7 +46,7 @@ function merlin_sanitize_layout( $value ) {
  * @param string $value / Value of the setting
  * @return string
  */
-function merlin_sanitize_post_layout( $value ) {
+function zeepersonal_sanitize_post_layout( $value ) {
 
 	if ( ! in_array( $value, array( 'top', 'left', 'none' ), true ) ) :
         $value = 'left';
@@ -62,7 +62,7 @@ function merlin_sanitize_post_layout( $value ) {
  * @param string $value / Value of the setting
  * @return string
  */
-function merlin_sanitize_post_content( $value ) {
+function zeepersonal_sanitize_post_content( $value ) {
 
 	if ( ! in_array( $value, array( 'index', 'excerpt' ), true ) ) :
         $value = 'excerpt';
@@ -78,7 +78,7 @@ function merlin_sanitize_post_content( $value ) {
  * @param string $value / Value of the setting
  * @return string
  */
-function merlin_sanitize_slider_animation( $value ) {
+function zeepersonal_sanitize_slider_animation( $value ) {
 
 	if ( ! in_array( $value, array( 'slide', 'fade' ), true ) ) :
         $value = 'slide';

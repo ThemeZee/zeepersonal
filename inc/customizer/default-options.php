@@ -4,7 +4,7 @@
  *
  * Uses sane defaults in case the user has not configured any theme options yet.
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
 
@@ -13,16 +13,16 @@
  *
  * @return array
  */
-function merlin_theme_options() {
+function zeepersonal_theme_options() {
     
 	// Merge Theme Options Array from Database with Default Options Array
 	$theme_options = wp_parse_args( 
 		
 		// Get saved theme options from WP database
-		get_option( 'merlin_theme_options', array() ), 
+		get_option( 'zeepersonal_theme_options', array() ), 
 		
 		// Merge with Default Options if setting was not saved yet
-		merlin_default_options() 
+		zeepersonal_default_options() 
 		
 	);
 
@@ -37,12 +37,12 @@ function merlin_theme_options() {
  *
  * @return array
  */
-function merlin_default_options() {
+function zeepersonal_default_options() {
 
 	$default_options = array(
 		'layout' 							=> 'right-sidebar',
 		'sticky_nav'						=> false,
-		'latest_posts_title'				=> esc_html__( 'Latest Posts', 'merlin' ),
+		'latest_posts_title'				=> esc_html__( 'Latest Posts', 'zeepersonal' ),
 		'header_tagline' 					=> false,
 		'post_content' 						=> 'excerpt',
 		'excerpt_length' 					=> 30,
@@ -52,12 +52,7 @@ function merlin_default_options() {
 		'footer_meta_single'				=> true,
 		'meta_tags'							=> true,
 		'post_layout_archives'				=> 'left',
-		'post_image_single' 				=> true,
-		'slider_magazine' 					=> false,
-		'slider_blog' 						=> false,
-		'slider_category' 					=> 0,
-		'slider_limit' 						=> 8,
-		'slider_animation' 					=> 'slide'
+		'post_image_single' 				=> true
 	);
 	
 	return $default_options;

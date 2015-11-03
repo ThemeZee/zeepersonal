@@ -2,7 +2,7 @@
 /**
  * The template for displaying articles in the search loop
  *
- * @package Merlin
+ * @package zeePersonal
  */
 ?>
 
@@ -16,7 +16,7 @@
 
 		<div class="entry-content clearfix">
 			<?php the_excerpt(); ?>
-			<?php merlin_more_link(); ?>
+			<?php zeepersonal_more_link(); ?>
 		</div><!-- .entry-content -->
 
 	</article>

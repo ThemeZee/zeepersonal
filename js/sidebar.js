@@ -9,7 +9,7 @@
  *
  * Author: Thomas Weichselbaumer (themezee.com)
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
 (function($) {

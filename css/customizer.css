@@ -3,23 +3,23 @@
  *
  * Adjusts styling for theme option controls in the Customizer
  *
- * @package Merlin
+ * @package zeePersonal
  */
 
-#customize-control-merlin_control_latest_posts_title,
-#customize-control-merlin_control_post_content,
-#customize-control-merlin_control_postmeta_headline,
-#customize-control-merlin_control_footermeta_headline,
-#customize-control-merlin_control_slider_category,
-#customize-control-merlin_control_slider_limit,
-#customize-control-merlin_control_slider_animation {
+#customize-control-zeepersonal_control_latest_posts_title,
+#customize-control-zeepersonal_control_post_content,
+#customize-control-zeepersonal_control_postmeta_headline,
+#customize-control-zeepersonal_control_footermeta_headline,
+#customize-control-zeepersonal_control_slider_category,
+#customize-control-zeepersonal_control_slider_limit,
+#customize-control-zeepersonal_control_slider_animation {
 	margin-top: 12px;
 }
 
-#customize-control-merlin_control_sticky_nav_headline,
-#customize-control-merlin_control_postmeta_headline,
-#customize-control-merlin_control_footermeta_headline,
-#customize-control-merlin_control_post_image_single_header,
-#customize-control-merlin_control_slider_activate {
+#customize-control-zeepersonal_control_sticky_nav_headline,
+#customize-control-zeepersonal_control_postmeta_headline,
+#customize-control-zeepersonal_control_footermeta_headline,
+#customize-control-zeepersonal_control_post_image_single_header,
+#customize-control-zeepersonal_control_slider_activate {
 	margin-bottom: 0;
 }

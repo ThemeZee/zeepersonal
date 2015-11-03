@@ -4,19 +4,19 @@
  *
  * Contains all content after the main content area and sidebar
  *
- * @package Merlin
+ * @package zeePersonal
  */
  
 ?>
 	
 	</div><!-- #content -->
 	
-	<?php do_action( 'merlin_before_footer' ); ?>
+	<?php do_action( 'zeepersonal_before_footer' ); ?>
 
 	<footer id="colophon" class="site-footer clearfix" role="contentinfo">
 		
 		<div id="footer-text" class="site-info">
-			<?php do_action('merlin_footer_text'); ?>
+			<?php do_action('zeepersonal_footer_text'); ?>
 		</div><!-- .site-info -->
 			
 		<nav id="footer-links" class="footer-navigation navigation clearfix" role="navigation">

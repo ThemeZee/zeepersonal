@@ -1,43 +1,45 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying 404 pages (not found).
+ *
+ * @package Merlin
+ */
 
-	<div id="wrap">
-		<div id="content">
+get_header(); ?>
 
-	<!--- Post Starts -->
-		
-		<div class="type-page">
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			<div class="error-404 not-found type-page">
 			
-			<h2><?php _e('404 Error: Not found', 'themezee_lang'); ?></h2>
-				
-				<div class="entry">
-					<p><?php _e('The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for', 'themezee_lang'); ?></p>
-					<?php get_search_form(); ?>
-					
-					<?php wp_reset_query(); ?> 
+				<header class="entry-header">
 		
-					<h2><?php _e('Latest Posts', 'themezee_lang'); ?></h2><br/>
-					<ul>
+					<h1 class="page-title"><?php esc_html_e( '404: Page not found', 'merlin' ); ?></h1>
 					
-					<?php query_posts('post_type="post"&post_status="publish"&showposts=9'); ?>
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-							<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>
-						<?php endwhile; ?>
-						<?php endif; ?>
-						<?php wp_reset_query(); ?> 
-					</ul>
+				</header><!-- .entry-header -->
+				
+				<div class="entry-content clearfix">
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search or one of the links below?', 'merlin' ); ?></p>
 					
-					<h2><?php _e('Pages', 'themezee_lang'); ?></h2><br/>
-					<ul>
-						<?php wp_list_pages('title_li='); ?>
-					</ul>
+					<?php get_search_form(); ?>
+
+					<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+
+					<?php the_widget( 'WP_Widget_Archives', 'dropdown=1' ); ?>
+					
+					<?php the_widget( 'WP_Widget_Categories', 'dropdown=1' ); ?>
+
+					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+					
+					<?php the_widget( 'WP_Widget_Pages' ); ?>
+
 				</div>
 				
-		</div>
-			
-		<!--- Post Ends -->
-			
-	</div>
+			</div>
 
-		<?php get_sidebar(); ?>
-	</div>
+		</main><!-- #main -->
+	</section><!-- #primary -->
+	
+	<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>

@@ -1,117 +1,51 @@
-===================================
-Thanks for Downloading zeePersonal
-===================================
+=== Merlin ===
 
-Thank you for downloading my theme. 
-If you have any questions that are beyond the scope of this help file, 
-please visit themezee.com. Thanks so much!
+Contributors: themezee
+Tags: two-columns, light, blue, custom-background, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, custom-colors, full-width-template, sticky-post, threaded-comments, translation-ready, theme-options, fluid-layout, responsive-layout, one-column, left-sidebar, right-sidebar, three-columns, black, red, silver, white, green, gray
 
-It is completely optional, but if you like the Theme I would appreciate it if 
-you keep the credit link at the bottom.
+Requires at least: 4.2
+Tested up to: 4.3
+Stable tag: 1.0.4
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
------------------------------------
-Table of Contents
+A Magazine WordPress theme called Merlin.
 
-    * A) Requirements
-    * B) Installation
-    * C) Wordpress Options
-    * D) Theme Options
-    * E) Theme Colors
-    * F) Page Templates
-    * G) Theme License
------------------------------------
+== Description ==
 
-===================================
-A) Requirements
-===================================
+Merlin is a beautiful designed Magazine WordPress theme with a responsive layout. The theme comes with a gorgeous Post Slider, Magazine Homepage template and a Header Widget area. Settings can be configured easily in the Customizer. 
 
-The theme has been tested on all major browsers including Firefox 2 & 3.6, Opera 9.5 & 10, 
-Internet Explorer 7 & 8 and Safari 3.2.Your browser should have JavaScript enabled to make this theme work!
-For example the DropDown Navigation and the Content Slider need Javascript to work.
+== Installation ==
+	
+1. In your admin panel, go to Appearance > Themes and click the Add New button.
+2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
+3. Click Activate to use your new theme right away.
 
-The theme works on the latest Wordpress version without any problems. Previous versions have not been tested
-and are not supported. I suggest to update your wordpress installation, especially due to security flaws.
+== Frequently Asked Questions ==
 
-===================================
-B) Installation
-===================================
 
-   1. Automatic Installation
-      Go to WP-Admin > Appearance > Themes > Install Themes > Upload and choose the theme zip folder.
+== Changelog ==
 
-   2. Manual Installation
-      Upload the theme files to your wordpress theme folder wp-content/themes and activate the theme in
-      your wordpress admin panel. That's it!
+= 1.0.4 - September 01 2015 =
+* moved register_widget() functions to functions.php
+* added readme.txt
 
-To find out more about installing WordPress themes please also see the WordPress documentation.
+= 1.0.3 - August 29 2015 =
+* improved phrasing of all translatable text strings
+* added German language files
 
-===================================
-C) Wordpress Options
-===================================
+= 1.0.2 - August 19 2015 =
+* fixed deprecating PHP4 style constructors notices in WordPress 4.3
 
-Afterwards you should read a few more detailed explanations about the features and recommended settings
-of your downloaded theme.
+= 1.0.1 - July 30 2015 =
+* fixed Merlin Category Posts Widgets causing some warnings on post edit screen
 
-   1. Post Thumbnails
-      This theme uses the wordpress post_thumbnail function. You can easily add your thumbnail in every post
-      by clicking on Set featured image in the Featured Image box on the right, upload your picture and click
-      Use as featured image.
+= 1.0 - July 25 2015 =
+* Initial release
 
-   2. Media Settings
-      The size of your thumbnail images is set in your wordpress media settings and can be changed at 
-      WP-Admin > Settings > Media. The theme uses medium_size in single posts and pages and thumbnail_size
-      in index and archiv files.
+== Credits ==
 
-   3. Pagination
-      The theme includes css styles for the 'wp_pagenavi' plugin. Simply download the plugin here and 
-      install it to use pagination.
-
-===================================
-D) Theme Options
-===================================
-
-The theme contains an own admin page for further settings. Login to your Wordpress admin panel and go to 
-WP-Admin > Appearance > “zeePersonal” Options. There are several settings to change the logo, structure and
-layout of your theme. Furthermore you can manage the Featured Post Slider and 125x125 Ad Spots. 
-Every theme option is quite well explained so there shouldn't be any questions.
-
-These settings should definitely reduce the launch time for your wordpress blog. For any other changes which
-can't be made with the admin page you have to manually change the files.
-
-===================================
-E) Theme Colors
-===================================
-
-My theme comes with a couple of color skins from which you can select one in the theme option panel. 
-You can also choose the custom color skin and add your own hex color code via the theme option panel.
-
-All styles are stored in the folder /includes/styles. There is a CSS file and a image folder for each color,
-which you can manually change or even add new ones. So you have the opportunity to create individual and 
-unlimited skins for your theme. Have fun!
-
-===================================
-F) Page Templates
-===================================
-
-I have included a few, nice page templates for advanced content presentation.
-
-   1. Full Width Template
-      This template shows the page content in full-width without any sidebars.
-
-   2. Sitemap Template
-      Shows a Sitemap with the latest posts, pages, categories and archives.
-
-===================================
-G) Theme License
-===================================
-
-zeePersonal is released under the GNU general public license. 
-That means you can use this theme on all of your pages - for personal or commercial purposes
-
-===================================
-Enjoy!
-===================================
-
-Once again, thank you so much for downloading this theme. 
-As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme.
-Just post a comment on themezee.com
+* Based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+* normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2015 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
+* Genericons http://genericons.com, (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+* Flexslider http://www.woothemes.com/flexslider/, (C) 2015 WooThemes, [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)

@@ -1,43 +1,72 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying search results pages.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Merlin
+ */
+ 
+get_header(); 
 
-	<div id="wrap">
-		<div id="content">
-		
-		<?php if (have_posts()) : ?>
-		<h2 class="arh"><?php _e('Search results for ', 'themezee_lang'); echo get_search_query(); ?></h2>
-		
-		<?php while (have_posts()) : the_post();
-		
-			get_template_part( 'loop', 'index' );
-		
-		endwhile; ?>
-			
-			<div class="more_posts">
-			<?php if(function_exists('wp_pagenavi')) { // if PageNavi is activated ?>
-				<?php wp_pagenavi(); // Use PageNavi ?>
-			<?php } else { // Otherwise, use traditional Navigation ?>
-			
-					<span class="post_links"><?php next_posts_link(__('&laquo; Older Entries', 'themezee_lang')) ?> &nbsp; <?php previous_posts_link (__('Recent Entries &raquo;', 'themezee_lang')) ?></span>
-			<?php }?>
-			</div>
-			
-			
-			<?php else : ?>
+// Get Theme Options from Database
+$theme_options = merlin_theme_options();
+?>
 
-			<h2 class="arh"><?php _e('Search results for ', 'themezee_lang'); echo get_search_query(); ?></h2>
-			
-			<div class="post">
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+		
+			<header class="page-header">
 				
-				<div class="entry">
-					<p><?php _e('No matches. Please try again, or use the navigation menus to find what you search for.', 'themezee_lang'); ?></p>
+				<h1 class="archive-title"><?php printf( esc_html__( 'Search Results for: %s', 'merlin' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				
+			</header><!-- .page-header -->
+			
+		<?php 
+		if (have_posts()) : 
+		
+			while (have_posts()) : the_post();
+	
+				if ( 'post' == get_post_type() ) :
+		
+					get_template_part( 'template-parts/content', $theme_options['post_content'] );
+				
+				else :
+				
+					get_template_part( 'template-parts/content', 'search' );
+					
+				endif;
+		
+			endwhile;
+
+			// Display Pagination	
+			merlin_pagination();
+
+		else : ?>
+
+			<div class="no-matches type-page">
+				
+				<header class="entry-header">
+		
+					<h1 class="page-title"><?php esc_html_e( 'No matches', 'merlin' ); ?></h1>
+					
+				</header><!-- .entry-header -->
+				
+				<div class="entry-content">
+					
+					<p><?php esc_html_e( 'Please try again, or use the navigation menus to find what you search for.', 'merlin' ); ?></p>
+					
+					<?php get_search_form(); ?>
+				
 				</div>
 				
 			</div>
 
-			<?php endif; ?>
+		<?php endif; ?>
 			
-	</div>
-		
-		<?php get_sidebar(); ?>
-	</div>
+		</main><!-- #main -->
+	</section><!-- #primary -->
+	
+	<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>

@@ -2,6 +2,10 @@
 zeePersonal Changelog
 ===================================
 
+Version 1.5
+-----------------------------------
+[moved] all theme options to Customizer
+
 Version 1.4.1
 -----------------------------------
 - changed theme URL in style.css

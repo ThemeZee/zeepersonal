@@ -1,48 +1,79 @@
-<!DOCTYPE html><!-- HTML 5 -->
+<?php
+/**
+ * The header for our theme.
+ *
+ * Displays all of the <head> section and everything up till <div id="content">
+ *
+ * @package Merlin
+ */
+ 
+// Get Theme Options from Database
+$theme_options = merlin_theme_options();
+	
+?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
 <head>
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	
-	<title><?php wp_title('|', true, 'right'); ?></title>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 
-<?php themezee_wrapper_before(); // hook before #wrapper ?>
-<div id="wrapper">
-
-	<?php themezee_header_before(); // hook before #header ?>
-	<div id="header">
-
-		<div id="head">
-			<div id="logo">
-				<?php 
-				$options = get_option('themezee_options');
-				if ( isset($options['themeZee_general_logo']) and $options['themeZee_general_logo'] <> "" ) { ?>
-					<a href="<?php echo home_url(); ?>"><img src="<?php echo esc_url($options['themeZee_general_logo']); ?>" alt="Logo" /></a>
-				<?php } else { ?>
-					<a href="<?php echo home_url(); ?>/"><h1><?php bloginfo('name'); ?></h1></a>
-				<?php } ?>
+	<div id="page" class="hfeed site">
+		
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'merlin' ); ?></a>
+		
+		<header id="masthead" class="site-header clearfix" role="banner">
+			
+			<div id="header-top" class="header-bar-wrap">
+				
+				<?php get_template_part( 'template-parts/header-bar' ); ?>
+				
 			</div>
-			<div id="navi">
+			
+			<div class="header-main clearfix">
+						
+				<div id="logo" class="site-branding clearfix">
+				
+					<?php do_action('merlin_site_title'); ?>
+				
+				</div><!-- .site-branding -->
+				
+				<div class="header-widgets clearfix">
+					
+					<?php // Display Header Widgets
+					if( is_active_sidebar('header') ) : 
+			
+						dynamic_sidebar('header');
+						
+					endif; ?>
+					
+				</div><!-- .header-widgets -->
+			
+			</div><!-- .header-main -->
+			
+			<nav id="main-navigation" class="primary-navigation navigation clearfix" role="navigation">
 				<?php 
-					// Get Navigation out of Theme Options
-					wp_nav_menu(array('theme_location' => 'navi', 'container' => false, 'menu_id' => 'nav', 'echo' => true, 'fallback_cb' => 'themezee_default_menu', 'before' => '', 'after' => '', 'link_before' => '', 'link_after' => '', 'depth' => 0));
+					// Display Main Navigation
+					wp_nav_menu( array(
+						'theme_location' => 'primary', 
+						'container' => false, 
+						'menu_class' => 'main-navigation-menu', 
+						'echo' => true, 
+						'fallback_cb' => 'merlin_default_menu')
+					);
 				?>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-	<?php themezee_header_after(); // hook after #header ?>
-	
-	<?php if( get_header_image() != '' ) : ?>
-		<div id="custom_header_bg">
-			<div id="custom_header">
-				<img src="<?php echo get_header_image(); ?>" />
-			</div>
-		</div>
-	<?php endif; ?>
+			</nav><!-- #main-navigation -->
+			
+			<?php // Display Custom Header Image
+			merlin_header_image(); ?>
+		
+		</header><!-- #masthead -->
+		
+		<div id="content" class="site-content container clearfix">
+		

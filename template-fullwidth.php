@@ -1,18 +1,15 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Template Name: Full-width Page
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
+ * Description: A custom page template for displaying a fullwidth page with no sidebar.
  *
  * @package Merlin
  */
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
+	<section id="primary" class="fullwidth-content-area content-area">
 		<main id="main" class="site-main" role="main">
 		
 			<?php while (have_posts()) : the_post();
@@ -25,7 +22,5 @@ get_header(); ?>
 		
 		</main><!-- #main -->
 	</section><!-- #primary -->
-	
-	<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

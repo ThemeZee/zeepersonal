@@ -1,20 +1,26 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all single posts.
+ *
+ * @package Merlin
+ */
 
-	<div id="wrap">
-		<div id="content">
+get_header(); ?>
 
-		<?php if (have_posts()) : while (have_posts()) : the_post();
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 		
-			get_template_part( 'loop', 'single' );
-		
-		endwhile; ?>
+		<?php while (have_posts()) : the_post();
 
-		<?php endif; ?>
+			get_template_part( 'template-parts/content', 'single' );
 			
-		<?php comments_template(); ?>
+			comments_template();
+
+		endwhile; ?>
 		
-	</div>
-		
-		<?php get_sidebar(); ?>
-	</div>
+		</main><!-- #main -->
+	</section><!-- #primary -->
+	
+	<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>

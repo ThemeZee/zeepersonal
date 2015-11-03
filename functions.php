@@ -1,197 +1,225 @@
 <?php
+/**
+ * Merlin functions and definitions
+ *
+ * @package Merlin
+ */
 
-// Set Content Width
-if ( ! isset( $content_width ) )
-	$content_width = 480;
+/**
+ * Merlin only works in WordPress 4.2 or later.
+ */
+if ( version_compare( $GLOBALS['wp_version'], '4.2', '<' ) ) :
+	require get_template_directory() . '/inc/back-compat.php';
+endif;
 
-/*==================================== THEME SETUP ====================================*/
 
-// Load default style.css and Javascripts
-add_action('wp_enqueue_scripts', 'themezee_enqueue_scripts');
+if ( ! function_exists( 'merlin_setup' ) ) :
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
+ */
+function merlin_setup() {
 
-if ( ! function_exists( 'themezee_enqueue_scripts' ) ):
-function themezee_enqueue_scripts() { 
+	// Make theme available for translation. Translations can be filed in the /languages/ directory.
+	load_theme_textdomain( 'merlin', get_template_directory() . '/languages' );
+
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+
+	// Let WordPress manage the document title.
+	add_theme_support( 'title-tag' );
+
+	// Enable support for Post Thumbnails on posts and pages.
+	add_theme_support( 'post-thumbnails' );
+	
+	// Set detfault Post Thumbnail size
+	set_post_thumbnail_size( 820, 410, true );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'primary' => esc_html__( 'Main Navigation', 'merlin' ),
+		'secondary' => esc_html__( 'Top Navigation', 'merlin' ),
+		'footer' => esc_html__( 'Footer Navigation', 'merlin' ),
+		'social' => esc_html__( 'Social Icons', 'merlin' )
+	) );
+
+	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
+	add_theme_support( 'html5', array(
+		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
+	) );
+
+	// Set up the WordPress core custom background feature.
+	add_theme_support( 'custom-background', apply_filters( 'merlin_custom_background_args', array('default-color' => 'e5e5e5') ) );
+	
+	// Set up the WordPress core custom header feature.
+	add_theme_support('custom-header', apply_filters( 'merlin_custom_header_args', array(
+		'header-text' => false,
+		'width'	=> 1190,
+		'height' => 250,
+		'flex-height' => true
+	) ) );
+	
+}
+endif; // merlin_setup
+add_action( 'after_setup_theme', 'merlin_setup' );
+
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function merlin_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'merlin_content_width', 810 );
+}
+add_action( 'after_setup_theme', 'merlin_content_width', 0 );
+
+
+/**
+ * Register widget areas and custom widgets.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ */
+function merlin_widgets_init() {
+	
+	register_sidebar( array(
+		'name' => esc_html__( 'Sidebar', 'merlin' ),
+		'id' => 'sidebar',
+		'description' => esc_html__( 'Appears on posts and pages except Magazine Homepage and Fullwidth template.', 'merlin' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix">',
+		'after_widget' => '</aside>',
+		'before_title' => '<div class="widget-header"><h3 class="widget-title">',
+		'after_title' => '</h3></div>',
+	));
+	
+	register_sidebar( array(
+		'name' => esc_html__( 'Header', 'merlin' ),
+		'id' => 'header',
+		'description' => esc_html__( 'Appears on header area. You can use a search or ad widget here.', 'merlin' ),
+		'before_widget' => '<aside id="%1$s" class="header-widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h4 class="header-widget-title">',
+		'after_title' => '</h4>',
+	));
+	
+	register_sidebar( array(
+		'name' => esc_html__( 'Magazine Homepage', 'merlin' ),
+		'id' => 'magazine-homepage',
+		'description' => esc_html__( 'Appears on Magazine Homepage template only. You can use the Category Posts widgets here.', 'merlin' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<div class="widget-header"><h3 class="widget-title">',
+		'after_title' => '</h3></div>',
+	));
+	
+} // merlin_widgets_init
+add_action( 'widgets_init', 'merlin_widgets_init' );
+
+
+/**
+ * Enqueue scripts and styles.
+ */
+function merlin_scripts() {
+	global $wp_scripts;
 	
 	// Register and Enqueue Stylesheet
-	wp_register_style('zeePersonal_stylesheet', get_stylesheet_uri());
-	wp_enqueue_style('zeePersonal_stylesheet');
+	wp_enqueue_style( 'merlin-stylesheet', get_stylesheet_uri() );
 	
-	// Enqueue jQuery Framework
-	wp_enqueue_script('jquery');
+	// Register Genericons
+	wp_enqueue_style( 'merlin-genericons', get_template_directory_uri() . '/css/genericons/genericons.css' );
 	
-	// Register and enqueue the Malsup Cycle Plugin
-	wp_register_script('zee_jquery-cycle', get_template_directory_uri() .'/includes/js/jquery.cycle.all.min.js', array('jquery'));
-	wp_enqueue_script('zee_jquery-cycle');
-}
-endif;
+	// Register and Enqueue HTML5shiv to support HTML5 elements in older IE versions
+	wp_enqueue_script( 'merlin-html5shiv', get_template_directory_uri() . '/js/html5shiv.min.js', array(), '3.7.2', false );
+	$wp_scripts->add_data( 'merlin-html5shiv', 'conditional', 'lt IE 9' );
 
-
-// Load comment-reply.js if comment form is loaded and threaded comments activated
-add_action( 'comment_form_before', 'themezee_enqueue_comment_reply' );
+	// Register and enqueue navigation.js
+	wp_enqueue_script( 'merlin-jquery-navigation', get_template_directory_uri() .'/js/navigation.js', array('jquery') );
 	
-function themezee_enqueue_comment_reply() {
-	if( get_option( 'thread_comments' ) ) {
+	// Register and enqueue sidebar.js
+	wp_enqueue_script( 'merlin-jquery-sidebar', get_template_directory_uri() .'/js/sidebar.js', array('jquery') );
+	
+	// Register and Enqueue Google Fonts
+	wp_enqueue_style( 'merlin-default-fonts', merlin_google_fonts_url(), array(), null );
+
+	// Register Comment Reply Script for Threaded Comments
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-}
-
-
-// Setup Function: Registers support for various WordPress features
-add_action( 'after_setup_theme', 'themezee_setup' );
-
-if ( ! function_exists( 'themezee_setup' ) ):
-function themezee_setup() { 
 	
-	// init Localization
-	load_theme_textdomain('themezee_lang', get_template_directory() . '/includes/lang' );
+} // merlin_scripts
+add_action( 'wp_enqueue_scripts', 'merlin_scripts' );
+
+
+/**
+ * Retrieve Font URL to register default Google Fonts
+ */
+function merlin_google_fonts_url() {
+    
+	// Set default Fonts
+	$font_families = array('Roboto', 'Hammersmith One');
+
+	// Build Fonts URL
+	$query_args = array(
+		'family' => urlencode( implode( '|', $font_families ) ),
+		'subset' => urlencode( 'latin,latin-ext' ),
+	);
+	$fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
+
+    return apply_filters( 'merlin_google_fonts_url', $fonts_url );
+}
+
+
+/**
+ * Add custom sizes for featured images
+ */
+function merlin_add_image_sizes() {
 	
-	// Add Theme Support
-	add_theme_support('post-thumbnails');
-	add_theme_support('automatic-feed-links');
-	add_editor_style();
-
-	// Add Custom Background
-	add_theme_support('custom-background', array('default-color' => '171717'));
-
-	// Add Custom Header
-	add_theme_support('custom-header', array(
-		'default-image' => get_template_directory_uri() . '/images/default_header.jpg',
-		'header-text' => false,
-		'width'	=> 930,
-		'height' => 160,
-		'flex-height' => true,
-		'wp-head-callback' => 'themezee_header_style'));
-		
-	// Register Navigation Menus
-	register_nav_menu( 'navi', __('Navigation', 'themezee_lang') );
-}
-endif;
-
-// Defines extra CSS for Custom Header
-function themezee_header_style() {
-    ?><style type="text/css">
-	   #custom_header {
-			margin: 0 auto;
-	   }
-    </style><?php
-}
-
-// Register Sidebars
-add_action( 'widgets_init', 'themezee_register_sidebars' );
-
-if ( ! function_exists( 'themezee_register_sidebars' ) ):
-function themezee_register_sidebars() { 
+	// Add image size for small post thumbnais
+	add_image_size( 'merlin-thumbnail-small', 360, 270, true );
 	
-	// Register Sidebars
-	register_sidebar(array('name' => __('Sidebar Blog', 'themezee_lang'), 'id' => 'sidebar-blog'));
-	register_sidebar(array('name' => __('Sidebar Pages', 'themezee_lang'), 'id' => 'sidebar-pages'));
+	// Add Custom Header Image Size
+	add_image_size( 'merlin-header-image', 1190, 250, true );
 	
-	// Register Footer Bars
-	register_sidebar(array('name' => __('Footer Left', 'themezee_lang'), 'id' => 'sidebar-footer-left'));
-	register_sidebar(array('name' => __('Footer Center', 'themezee_lang'), 'id' => 'sidebar-footer-center'));
-	register_sidebar(array('name' => __('Footer Right', 'themezee_lang'), 'id' => 'sidebar-footer-right'));
-}
-endif;
-
-
-/*==================================== INCLUDE FILES ====================================*/
-
-// Includes all files needed for theme options, custom JS/CSS and Widgets
-add_action( 'after_setup_theme', 'themezee_include_files' );
-
-if ( ! function_exists( 'themezee_include_files' ) ):
-function themezee_include_files() { 
-
-	// include Admin Files
-	locate_template('/includes/admin/theme-functions.php', true);
-	locate_template('/includes/admin/theme-admin.php', true);
-
-	// include custom Javascript and custom CSS Handler files
-	locate_template('/includes/js/jscript.php', true);
-	locate_template('/includes/css/csshandler.php', true);
+	// Add Slider Image Size
+	add_image_size( 'merlin-slider-image', 880, 440, true );
 	
-	// include Theme Hooks
-	locate_template('/includes/theme-hooks.php', true);
+	// Add Category Post Widget image sizes
+	add_image_size( 'merlin-category-posts-widget-small', 135, 75, true );
+	add_image_size( 'merlin-category-posts-widget-medium', 270, 150, true );
+	add_image_size( 'merlin-category-posts-widget-large', 585, 325, true );
 	
-	// include Widget Files
-	locate_template('/includes/widgets/theme-widget-ads.php', true);
-	locate_template('/includes/widgets/theme-widget-socialmedia.php', true);
 }
-endif;
+add_action( 'after_setup_theme', 'merlin_add_image_sizes' );
 
 
-/*==================================== THEME FUNCTIONS ====================================*/
+/**
+ * Include Files
+ */
+ 
+// include Theme Info page
+require get_template_directory() . '/inc/theme-info.php';
 
-// Creates a better title element text for output in the head section
-add_filter( 'wp_title', 'themezee_wp_title', 10, 2 );
+// include Theme Customizer Options
+require get_template_directory() . '/inc/customizer/customizer.php';
+require get_template_directory() . '/inc/customizer/default-options.php';
 
-function themezee_wp_title( $title, $sep = '' ) {
-	global $paged, $page;
+// Include Extra Functions
+require get_template_directory() . '/inc/extras.php';
 
-	if ( is_feed() )
-		return $title;
+// include Template Functions
+require get_template_directory() . '/inc/template-tags.php';
 
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
+// Include support functions for Theme Addons
+require get_template_directory() . '/inc/addons.php';
 
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = "$title $sep $site_description";
+// Include Post Slider Setup
+require get_template_directory() . '/inc/slider.php';
 
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'themezee' ), max( $paged, $page ) );
-
-	return $title;
-}
-
-
-// Add Default Menu Fallback Function
-function themezee_default_menu() {
-	echo '<ul id="nav" class="menu">'. wp_list_pages('title_li=&echo=0') .'</ul>';
-}
-
-
-// Display Credit Link Function
-function themezee_credit_link() { ?>
-	<a href="http://themezee.com/themes/zeepersonal/"><?php _e('zeePersonal Theme', 'themezee_lang'); ?></a>
-<?php
-}
-
-
-// Change Excerpt Length
-add_filter('excerpt_length', 'themezee_excerpt_length');
-function themezee_excerpt_length($length) {
-    return 65;
-}
-
-
-// Change Excerpt More
-add_filter('excerpt_more', 'themezee_excerpt_more');
-function themezee_excerpt_more($more) {
-    return '';
-}
-
-
-// Add Postmeta Data
-if ( ! function_exists( 'themezee_display_postmeta' ) ):
-function themezee_display_postmeta() {
-	the_author_posts_link(); ?>
-	/ <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_time(get_option('date_format')); ?></a> /
-<?php 
-	comments_popup_link( __('No comments', 'themezee_lang'),__('One comment','themezee_lang'),__('% comments','themezee_lang') );
-	edit_post_link(__( 'Edit', 'themezee_lang' ), ' / ');
-}
-endif;
-
-
-// Add Postinfo Data
-if ( ! function_exists( 'themezee_display_postinfo' ) ):
-function themezee_display_postinfo() {
-	_e('Category: ', 'themezee_lang'); the_category(', '); echo ' / ';
-	if (get_the_tags()) the_tags(__('Tags: ', 'themezee_lang'), ', ');
-}
-endif;
-
-?>
+// include Widget Files
+require get_template_directory() . '/inc/widgets/widget-category-posts-boxed.php';
+require get_template_directory() . '/inc/widgets/widget-category-posts-columns.php';
+require get_template_directory() . '/inc/widgets/widget-category-posts-grid.php';

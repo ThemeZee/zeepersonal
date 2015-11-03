@@ -36,7 +36,7 @@ function zeepersonal_setup() {
 	add_theme_support( 'post-thumbnails' );
 	
 	// Set detfault Post Thumbnail size
-	set_post_thumbnail_size( 820, 410, true );
+	set_post_thumbnail_size( 900, 350, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -55,7 +55,7 @@ function zeepersonal_setup() {
 	// Set up the WordPress core custom header feature.
 	add_theme_support('custom-header', apply_filters( 'zeepersonal_custom_header_args', array(
 		'header-text' => false,
-		'width'	=> 1190,
+		'width'	=> 2500,
 		'height' => 250,
 		'flex-height' => true
 	) ) );
@@ -148,7 +148,7 @@ add_action( 'wp_enqueue_scripts', 'zeepersonal_scripts' );
 function zeepersonal_google_fonts_url() {
     
 	// Set default Fonts
-	$font_families = array('Roboto', 'Hammersmith One');
+	$font_families = array( 'Open Sans', 'Merriweather' );
 
 	// Build Fonts URL
 	$query_args = array(
@@ -159,21 +159,6 @@ function zeepersonal_google_fonts_url() {
 
     return apply_filters( 'zeepersonal_google_fonts_url', $fonts_url );
 }
-
-
-/**
- * Add custom sizes for featured images
- */
-function zeepersonal_add_image_sizes() {
-	
-	// Add image size for small post thumbnais
-	add_image_size( 'zeepersonal-thumbnail-small', 360, 270, true );
-	
-	// Add Custom Header Image Size
-	add_image_size( 'zeepersonal-header-image', 1190, 250, true );
-	
-}
-add_action( 'after_setup_theme', 'zeepersonal_add_image_sizes' );
 
 
 /**

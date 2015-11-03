@@ -28,20 +28,9 @@ if ( ! function_exists( 'zeepersonal_header_image' ) ):
  */
 function zeepersonal_header_image() {
 		
-	// Don't display header image on template-magazine.php
-	if( is_page_template('template-magazine.php') )
-		return;
-		
-	// Check if page is displayed and featured header image is used
-	if( is_page() && has_post_thumbnail() ) :
-	?>
-		<div id="headimg" class="header-image featured-image-header">
-			<?php the_post_thumbnail('zeepersonal-header-image'); ?>
-		</div>
-<?php
 	// Check if there is a custom header image
-	elseif( get_header_image() ) :
-	?>
+	if( get_header_image() ) : ?>
+		
 		<div id="headimg" class="header-image">
 			<img src="<?php echo get_header_image(); ?>" />
 		</div>
@@ -57,31 +46,19 @@ if ( ! function_exists( 'zeepersonal_post_image_archives' ) ):
  * Displays the featured image on archive pages
  */
 function zeepersonal_post_image_archives() {
-	
+		
 	// Get Theme Options from Database
 	$theme_options = zeepersonal_theme_options();
 	
-	// Return early if no featured image should be displayed
-	if ( isset($theme_options['post_layout_archives']) and $theme_options['post_layout_archives'] == 'none' ) :
-		return;
-	endif;
-	
-	// Display Featured Image beside post content
-	if ( isset($theme_options['post_layout_archives']) and $theme_options['post_layout_archives'] == 'left' ) : ?>
-
-		<a class="post-thumbnail-small" href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
-			<?php the_post_thumbnail( 'zeepersonal-thumbnail-small' ); ?>
-		</a>
-
-<?php
-	// Display Featured Image above post content
-	else: ?>
-
-		<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
-			<?php the_post_thumbnail(); ?>
-		</a>
-
-<?php
+	// Display Postmeta
+	if ( true == $theme_options['post_thumbnail_archives'] ) : ?>
+		
+		<div class="entry-thumbnail">
+			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
+				<?php the_post_thumbnail(); ?>
+			</a>
+		</div>
+<?php 
 	endif;
 
 } // zeepersonal_post_image_archives()
@@ -93,19 +70,22 @@ if ( ! function_exists( 'zeepersonal_post_image_single' ) ):
  * Displays the featured image on single posts
  */
 function zeepersonal_post_image_single() {
-	
+		
 	// Get Theme Options from Database
 	$theme_options = zeepersonal_theme_options();
 	
-	// Display Post Thumbnail if activated
-	if ( isset($theme_options['post_image_single']) and $theme_options['post_image_single'] == true ) :
-
-		the_post_thumbnail();
-
+	// Display Postmeta
+	if ( true == $theme_options['post_thumbnail_single'] ) : ?>
+		
+		<div class="entry-thumbnail">
+			<?php the_post_thumbnail(); ?>
+		</div>
+<?php 
 	endif;
 
 } // zeepersonal_post_image_single()
 endif;
+
 
 if ( ! function_exists( 'zeepersonal_entry_meta' ) ):	
 /**
@@ -117,11 +97,11 @@ function zeepersonal_entry_meta() {
 	$theme_options = zeepersonal_theme_options();
 	
 	// Display Postmeta
-	if ( true == $theme_options['meta_date'] or true == $theme_options['meta_author'] ) : ?>
+	if ( true == $theme_options['meta_date'] or true == $theme_options['meta_author'] ) :
 	
-		<div class="entry-meta">
+		echo '<div class="entry-meta">';
 		
-		<?php // Display Date unless user has deactivated it via settings
+		// Display Date unless user has deactivated it via settings
 		if ( true == $theme_options['meta_date'] ) :
 		
 			zeepersonal_meta_date();
@@ -133,11 +113,25 @@ function zeepersonal_entry_meta() {
 		
 			zeepersonal_meta_author();
 		
-		endif; ?>
+		endif; 
 		
-		</div>
+		// Display Categories unless user has deactivated it via settings
+		if ( true == $theme_options['meta_category'] ) :
 		
-	<?php endif;
+			zeepersonal_meta_category();
+		
+		endif; 
+		
+		// Display Author unless user has deactivated it via settings
+		if ( true == $theme_options['meta_comments'] and comments_open() ) :
+		
+			zeepersonal_meta_comments();
+		
+		endif; 
+
+		echo '</div>';
+		
+	endif;
 
 } // zeepersonal_entry_meta()
 endif;
@@ -155,10 +149,8 @@ function zeepersonal_meta_date() {
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() )
 	);
-
-	$posted_on = sprintf( esc_html_x( 'Posted on %s', 'post date', 'zeepersonal' ), $time_string );
 	
-	echo '<span class="meta-date">' . $posted_on . '</span>';
+	echo '<span class="meta-date">' . $time_string . '</span>';
 
 }  // zeepersonal_meta_date()
 endif;
@@ -176,11 +168,40 @@ function zeepersonal_meta_author() {
 		esc_html( get_the_author() )
 	);
 	
-	$byline = sprintf( esc_html_x( 'by %s', 'post author', 'zeepersonal' ), $author_string );
-	
-	echo '<span class="meta-author"> ' . $byline . '</span>';
+	echo '<span class="meta-author"> ' . $author_string . '</span>';
 
 }  // zeepersonal_meta_author()
+endif;
+
+
+if ( ! function_exists( 'zeepersonal_meta_category' ) ):
+/**
+ * Displays the post categories
+ */
+function zeepersonal_meta_category() {  
+	
+	echo '<span class="meta-category"> ' . get_the_category_list(' / '). '</span>';
+
+}  // zeepersonal_meta_category()
+endif;
+
+
+if ( ! function_exists( 'zeepersonal_meta_comments' ) ):
+/**
+ * Displays the post comments
+ */
+function zeepersonal_meta_comments() {  
+	
+	echo '<span class="meta-comments">';
+	
+	comments_popup_link( 
+		esc_html__( 'Leave a comment', 'zeepersonal' ),
+		esc_html__( 'One comment', 'zeepersonal' ), 
+		esc_html__( '% comments', 'zeepersonal' ) );
+	
+	echo '</span>';
+
+}  // zeepersonal_meta_comments()
 endif;
 
 
@@ -211,99 +232,13 @@ function zeepersonal_entry_tags() {
 endif;
 
 
-if ( ! function_exists( 'zeepersonal_entry_footer' ) ):
-/**
- * Displays the category on comments on posts
- */	
-function zeepersonal_entry_footer() { 
-
-	// Get Theme Options from Database
-	$theme_options = zeepersonal_theme_options();
-	
-	// Display Postmeta
-	if ( ( is_single() && $theme_options['footer_meta_single'] ) or ( ! is_single() && $theme_options['footer_meta_archives'] ) ) : ?>
-	
-		<div class="entry-footer-meta">
-		
-			<span class="meta-category">
-				<?php echo get_the_category_list(' / '); ?>
-			</span>
-
-		<?php // Display comments
-		if ( comments_open() ) : ?>
-		
-			<span class="meta-comments">
-				<?php comments_popup_link( esc_html__( 'Leave a comment', 'zeepersonal' ), esc_html__( 'One comment', 'zeepersonal' ), esc_html__( '% comments', 'zeepersonal' ) ); ?>
-			</span>
-	
-		<?php endif; ?>
-		
-		</div>
-		
-	<?php endif;
-	
-} // zeepersonal_entry_footer()
-endif;
-
-
-if ( ! function_exists( 'zeepersonal_entry_meta_slider' ) ):
-/**
- * Displays date and author on slideshow posts
- */	
-function zeepersonal_entry_meta_slider() { 
-
-	// Get Theme Options from Database
-	$theme_options = zeepersonal_theme_options();
-	
-	// Display Postmeta
-	if ( true == $theme_options['meta_date'] or true == $theme_options['meta_author'] ) : ?>
-	
-		<div class="entry-meta">
-		
-		<?php // Display Date unless user has deactivated it via settings
-		if ( true == $theme_options['meta_date'] ) : ?>
-		
-			<span class="meta-date">
-				<?php printf( '<a href="%1$s" title="%2$s" rel="bookmark"><time datetime="%3$s">%4$s</time></a>', 
-						esc_url( get_permalink() ),
-						esc_attr( get_the_time() ),
-						esc_attr( get_the_date( 'c' ) ),
-						esc_html( get_the_date() )
-					);
-				?>
-			</span>
-		
-		<?php endif; 
-
-		// Display Author unless user has deactivated it via settings
-		if ( true == $theme_options['meta_author'] ) : ?>
-		
-			<span class="meta-author">
-				<?php printf('<a href="%1$s" title="%2$s" rel="author">%3$s</a>', 
-						esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-						esc_attr( sprintf( esc_html__( 'View all posts by %s', 'zeepersonal' ), get_the_author() ) ),
-						get_the_author()
-					);
-				?>
-			</span>
-		
-		<?php endif; ?>
-		
-		</div>
-		
-	<?php endif; 
-
-} // zeepersonal_entry_meta_slider()
-endif;
-
-
 if ( ! function_exists( 'zeepersonal_more_link' ) ):
 /**
  * Displays the more link on posts
  */
 function zeepersonal_more_link() { ?>
 
-	<a href="<?php echo esc_url( get_permalink() ) ?>" class="more-link"><?php esc_html_e( 'Read more', 'zeepersonal' ); ?></a>
+	<a href="<?php echo esc_url( get_permalink() ) ?>" class="more-link"><?php esc_html_e( 'Continue reading &raquo;', 'zeepersonal' ); ?></a>
 
 <?php
 }

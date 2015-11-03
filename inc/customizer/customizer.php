@@ -14,8 +14,6 @@ require( get_template_directory() . '/inc/customizer/functions/callback-function
 // Load Customizer Section Files
 require( get_template_directory() . '/inc/customizer/sections/customizer-general.php' );
 require( get_template_directory() . '/inc/customizer/sections/customizer-post.php' );
-require( get_template_directory() . '/inc/customizer/sections/customizer-postmeta.php' );
-require( get_template_directory() . '/inc/customizer/sections/customizer-images.php' );
 
 
 /**

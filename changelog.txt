@@ -5,6 +5,7 @@ zeePersonal Changelog
 Version 1.5
 -----------------------------------
 [moved] all theme options to Customizer
+[added] responsive design based on underscores
 
 Version 1.4.1
 -----------------------------------

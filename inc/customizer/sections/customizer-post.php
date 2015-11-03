@@ -23,23 +23,6 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
 		)
 	);
 	
-	// Add Title for latest posts setting
-	$wp_customize->add_setting( 'zeepersonal_theme_options[latest_posts_title]', array(
-        'default'           => esc_html__( 'Latest Posts', 'zeepersonal' ),
-		'type'           	=> 'option',
-        'transport'         => 'refresh',
-        'sanitize_callback' => 'esc_html'
-		)
-	);
-    $wp_customize->add_control( 'zeepersonal_control_latest_posts_title', array(
-        'label'    => esc_html__( 'Title above Latest Posts', 'zeepersonal' ),
-        'section'  => 'zeepersonal_section_post',
-        'settings' => 'zeepersonal_theme_options[latest_posts_title]',
-        'type'     => 'text',
-		'priority' => 1
-		)
-	);
-
 	// Add Settings and Controls for post content
 	$wp_customize->add_setting( 'zeepersonal_theme_options[post_content]', array(
         'default'           => 'excerpt',
@@ -53,7 +36,7 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'section'  => 'zeepersonal_section_post',
         'settings' => 'zeepersonal_theme_options[post_content]',
         'type'     => 'radio',
-		'priority' => 2,
+		'priority' => 1,
         'choices'  => array(
             'index' => esc_html__( 'Show full posts', 'zeepersonal' ),
             'excerpt' => esc_html__( 'Show post excerpts', 'zeepersonal' )
@@ -75,7 +58,101 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'settings' => 'zeepersonal_theme_options[excerpt_length]',
         'type'     => 'text',
 		'active_callback' => 'zeepersonal_control_post_content_callback',
-		'priority' => 3
+		'priority' => 2
+		)
+	);
+	
+	
+	// Add Post Meta Settings
+	$wp_customize->add_setting( 'zeepersonal_theme_options[postmeta_headline]', array(
+        'default'           => '',
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+        )
+    );
+    $wp_customize->add_control( new zeePersonal_Customize_Header_Control(
+        $wp_customize, 'zeepersonal_control_postmeta_headline', array(
+            'label' => esc_html__( 'Post Meta', 'zeepersonal' ),
+            'section' => 'zeepersonal_section_post',
+            'settings' => 'zeepersonal_theme_options[postmeta_headline]',
+            'priority' => 3
+            )
+        )
+    );
+	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_date]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_meta_date', array(
+        'label'    => esc_html__( 'Display post date', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[meta_date]',
+        'type'     => 'checkbox',
+		'priority' => 4
+		)
+	);
+	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_author]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_meta_author', array(
+        'label'    => esc_html__( 'Display post author', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[meta_author]',
+        'type'     => 'checkbox',
+		'priority' => 5
+		)
+	);
+	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_category]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_meta_category', array(
+        'label'    => esc_html__( 'Display post categories', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[meta_category]',
+        'type'     => 'checkbox',
+		'priority' => 6
+		)
+	);
+	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_comments]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_meta_comments', array(
+        'label'    => esc_html__( 'Display post comments', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[meta_comments]',
+        'type'     => 'checkbox',
+		'priority' => 7
+		)
+	);
+		$wp_customize->add_setting( 'zeepersonal_theme_options[meta_tags]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_meta_tags', array(
+        'label'    => esc_html__( 'Display post tags', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[meta_tags]',
+        'type'     => 'checkbox',
+		'priority' => 8
 		)
 	);
 	

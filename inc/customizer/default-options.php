@@ -42,17 +42,16 @@ function zeepersonal_default_options() {
 	$default_options = array(
 		'layout' 							=> 'right-sidebar',
 		'sticky_nav'						=> false,
-		'latest_posts_title'				=> esc_html__( 'Latest Posts', 'zeepersonal' ),
 		'header_tagline' 					=> false,
 		'post_content' 						=> 'excerpt',
 		'excerpt_length' 					=> 30,
+		'post_thumbnail_archives'			=> true,
+		'post_thumbnail_single'				=> true,
 		'meta_date'							=> true,
 		'meta_author'						=> true,
-		'footer_meta_archives'				=> true,
-		'footer_meta_single'				=> true,
-		'meta_tags'							=> true,
-		'post_layout_archives'				=> 'left',
-		'post_image_single' 				=> true
+		'meta_category'						=> true,
+		'meta_comments'						=> false,
+		'meta_tags'							=> true
 	);
 	
 	return $default_options;

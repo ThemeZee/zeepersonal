@@ -36,7 +36,7 @@ function zeepersonal_setup() {
 	add_theme_support( 'post-thumbnails' );
 	
 	// Set detfault Post Thumbnail size
-	set_post_thumbnail_size( 900, 350, true );
+	set_post_thumbnail_size( 900, 400, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(

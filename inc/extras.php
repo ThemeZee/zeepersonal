@@ -31,13 +31,8 @@ function zeepersonal_body_classes( $classes ) {
 	$theme_options = zeepersonal_theme_options();
 		
 	// Switch Sidebar Layout to left
-	if ( isset($theme_options['layout']) and $theme_options['layout'] == 'left-sidebar' ) :
+	if ( 'left-sidebar' == $theme_options['layout']  ) :
 		$classes[] = 'sidebar-left';
-	endif;
-	
-	// Add Sticky Navigation class
-	if ( isset($theme_options['sticky_nav']) and $theme_options['sticky_nav'] == true ) :
-		$classes[] = 'sticky-navigation';
 	endif;
 
 	return $classes;

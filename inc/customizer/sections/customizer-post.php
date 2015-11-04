@@ -62,9 +62,8 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
 		)
 	);
 	
-	
-	// Add Post Meta Settings
-	$wp_customize->add_setting( 'zeepersonal_theme_options[postmeta_headline]', array(
+	// Add Post Images Settings
+	$wp_customize->add_setting( 'zeepersonal_theme_options[post_images_headline]', array(
         'default'           => '',
 		'type'           	=> 'option',
         'transport'         => 'refresh',
@@ -72,11 +71,59 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         )
     );
     $wp_customize->add_control( new zeePersonal_Customize_Header_Control(
-        $wp_customize, 'zeepersonal_control_postmeta_headline', array(
+        $wp_customize, 'zeepersonal_control_post_images_headline', array(
+            'label' => esc_html__( 'Post Images', 'zeepersonal' ),
+            'section' => 'zeepersonal_section_post',
+            'settings' => 'zeepersonal_theme_options[post_images_headline]',
+            'priority' => 3
+            )
+        )
+    );
+	$wp_customize->add_setting( 'zeepersonal_theme_options[post_thumbnail_archives]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_post_thumbnail_archive', array(
+        'label'    => esc_html__( 'Display featured images on archives', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[post_thumbnail_archives]',
+        'type'     => 'checkbox',
+		'priority' => 4
+		)
+	);
+	$wp_customize->add_setting( 'zeepersonal_theme_options[post_thumbnail_single]', array(
+        'default'           => true,
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
+		)
+	);
+    $wp_customize->add_control( 'zeepersonal_control_post_thumbnail_single', array(
+        'label'    => esc_html__( 'Display featured images on single posts', 'zeepersonal' ),
+        'section'  => 'zeepersonal_section_post',
+        'settings' => 'zeepersonal_theme_options[post_thumbnail_single]',
+        'type'     => 'checkbox',
+		'priority' => 5
+		)
+	);
+	
+	// Add Post Meta Settings
+	$wp_customize->add_setting( 'zeepersonal_theme_options[post_meta_headline]', array(
+        'default'           => '',
+		'type'           	=> 'option',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+        )
+    );
+    $wp_customize->add_control( new zeePersonal_Customize_Header_Control(
+        $wp_customize, 'zeepersonal_control_post_meta_headline', array(
             'label' => esc_html__( 'Post Meta', 'zeepersonal' ),
             'section' => 'zeepersonal_section_post',
-            'settings' => 'zeepersonal_theme_options[postmeta_headline]',
-            'priority' => 3
+            'settings' => 'zeepersonal_theme_options[post_meta_headline]',
+            'priority' => 6
             )
         )
     );
@@ -92,7 +139,7 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'section'  => 'zeepersonal_section_post',
         'settings' => 'zeepersonal_theme_options[meta_date]',
         'type'     => 'checkbox',
-		'priority' => 4
+		'priority' => 7
 		)
 	);
 	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_author]', array(
@@ -107,7 +154,7 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'section'  => 'zeepersonal_section_post',
         'settings' => 'zeepersonal_theme_options[meta_author]',
         'type'     => 'checkbox',
-		'priority' => 5
+		'priority' => 8
 		)
 	);
 	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_category]', array(
@@ -122,7 +169,7 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'section'  => 'zeepersonal_section_post',
         'settings' => 'zeepersonal_theme_options[meta_category]',
         'type'     => 'checkbox',
-		'priority' => 6
+		'priority' => 9
 		)
 	);
 	$wp_customize->add_setting( 'zeepersonal_theme_options[meta_comments]', array(
@@ -137,7 +184,7 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'section'  => 'zeepersonal_section_post',
         'settings' => 'zeepersonal_theme_options[meta_comments]',
         'type'     => 'checkbox',
-		'priority' => 7
+		'priority' => 10
 		)
 	);
 		$wp_customize->add_setting( 'zeepersonal_theme_options[meta_tags]', array(
@@ -152,7 +199,7 @@ function zeepersonal_customize_register_post_settings( $wp_customize ) {
         'section'  => 'zeepersonal_section_post',
         'settings' => 'zeepersonal_theme_options[meta_tags]',
         'type'     => 'checkbox',
-		'priority' => 8
+		'priority' => 11
 		)
 	);
 	

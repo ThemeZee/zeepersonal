@@ -3,12 +3,12 @@ Theme Name: zeePersonal
 Theme URI: http://themezee.com/themes/zeepersonal/
 Author: ThemeZee
 Author URI: http://themezee.com
-Description: zeePersonal is a beautiful designed Magazine WordPress theme with a responsive layout. The theme comes with a gorgeous Post Slider, Magazine Homepage template and a Header Widget area. Settings can be configured easily in the Customizer. 
+Description: zeePersonal is a nice theme for a personal blog with great features.
 Version: 1.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: zeepersonal
-Tags: two-columns, light, blue, custom-background, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, custom-colors, full-width-template, sticky-post, threaded-comments, translation-ready, theme-options, fluid-layout, responsive-layout, one-column, left-sidebar, right-sidebar, three-columns, black, red, silver, white, green, gray
+Tags: two-columns, light, orange, custom-background, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, custom-colors, full-width-template, sticky-post, threaded-comments, translation-ready, theme-options, fluid-layout, responsive-layout, one-column, left-sidebar, right-sidebar, three-columns, black, red, blue, silver, white, green, gray
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -34,10 +34,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 10.0 - Navigation
 	10.1 - Top Navigation
 	10.2 - Main Navigation
-	10.3 - Social Icon Menu
 11.0 - Widgets
-	11.1 - Default Widgets
-	11.2 - Category Posts Widgets
 12.0 - Posts and pages
 11.0 - Comments
 12.0 - Footer
@@ -57,7 +54,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	14.10 - Mobile Small ( < 320px )
 15.0 - Theme Option Styles
 	15.1 - Sidebar Left Layout
-	15.2 - Sticky Navigation
 16.0 - Media Query Fixes
 --------------------------------------------------------------*/
 
@@ -465,13 +461,12 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	padding: 0.5em 0.8em;
-	font-size: 14px;
-	font-size: 0.875rem;
+	padding: 0.6em 1em;
+	font-size: 16px;
+	font-size: 1rem;
 	color: #fff;
 	background: #ee5500;
 	border: none;
-	text-transform: uppercase;
 	text-decoration: none;
 }
 
@@ -597,16 +592,14 @@ textarea {
 }
 
 .container {
-	max-width: 1190px;
+	max-width: 1290px;
 	width: 100%;
 	margin: 0 auto;
+	padding: 0 3em;
 }
 
 .site-content {
-	padding: 3em 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	padding-top: 3em;
 }
 
 .content-area {
@@ -1171,6 +1164,10 @@ textarea {
 	margin: -3em -3em 2em;
 }
 
+.sticky {
+
+}
+	
 /* Page Links | wp_link_pages() */
 .page-links {
 	margin: 0;
@@ -1316,6 +1313,10 @@ textarea {
 }
 
 /* Theme Pagination */
+.post-pagination {
+	margin: 0 0 3em 0;
+}
+
 .post-pagination a,
 .post-pagination .current {
 	display: inline-block;
@@ -1452,10 +1453,6 @@ textarea {
 
 .comment-form textarea {
 	margin-top: 0.4em;
-}
-
-.comment-form .submit {
-	padding: 1em 1.6em;
 }
 
 .comment-reply-title small a {
@@ -1616,43 +1613,103 @@ object {
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
+## 14.1 - Desktop X-Large ( < 1120px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 80em) {
+	
+	.container {
+		max-width: 100%;
+		margin: 0;
+		padding: 0 2.5em;
+	}
+	
+	.site-content {
+		padding-top: 2.5em;
+	}
+	
+	.content-area {
+		padding-right: 2.5em;
+	}
+	
+	.widget,
+	.type-post, 
+	.type-page, 
+	.type-attachment,
+	.post-pagination, 
+	.comments-area {
+		margin: 0 0 2.5em 0;
+	}
+	
+	.type-post, 
+	.type-page, 
+	.type-attachment  {
+		padding: 2.5em;
+	}
+	
+	.entry-thumbnail {
+		margin: -2.5em -2.5em 1.5em;
+	}
+	
+	.entry-meta {
+		margin: 1.5em -2.5em -2.5em;
+		padding: 1.25em 1.5em;
+	}
+	
+}
+
+/*--------------------------------------------------------------
 ## 14.1 - Desktop Large ( < 1120px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 70em) {
 	
-	.top-navigation-menu a {
-		font-size: 12px;
-		font-size: 0.75rem;
-	}
-
-	.social-icons-menu li a:before {
-		font-size: 21px;
+	.container {
+		padding: 0 2em;
 	}
 	
-	.page-title,
-	.entry-title {
-		font-size: 26px;
-		font-size: 1.625rem;
+	.site-content {
+		padding-top: 2em;
 	}
 	
-	.type-post .post-thumbnail-small + .entry-header .entry-title,
-	.widget-category-posts .large-post .entry-title 	{
-		font-size: 22px;
-		font-size: 1.375rem;
+	.content-area {
+		width: 70%;
+		padding-right: 2em;
+	}
+	
+	.sidebar {
+		width: 30%;
+	}
+	
+	.widget,
+	.type-post, 
+	.type-page, 
+	.type-attachment,
+	.post-pagination,
+	.comments-area {
+		margin: 0 0 2em 0;
+	}
+	
+	.type-post, 
+	.type-page, 
+	.type-attachment  {
+		padding: 2em;
+	}
+	
+	.entry-thumbnail {
+		margin: -2em -2em 1em;
+	}
+	
+	.entry-meta {
+		margin: 1em -2em -2em;
+		padding: 1em 1.25em;
+	}
+	
+	.main-navigation-menu li {
+		margin: 0 0.8em;
 	}
 
-	.widget-category-posts .medium-post .entry-title {
+	.main-navigation-menu a {
 		font-size: 15px;
 		font-size: 0.9375rem;
-	}
-	
-	.widget-category-posts .small-post .entry-title {
-		font-size: 14px;
-		font-size: 0.875rem;
-	}
-	
-	.widget-category-posts-boxed .category-posts-boxed-horizontal .large-post .more-link  {
-		display: none;
 	}
 	
 }
@@ -1661,14 +1718,7 @@ object {
 ## 14.2 - Desktop Medium ( < 1040px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 65em) {
-	
-	.content-area {
-		width: 70%;
-	}
 
-	.sidebar {
-		width: 30%;
-	}
 
 }
 
@@ -1682,19 +1732,85 @@ object {
 		text-align: center;
 		margin: 1em 0;
 	}
-
-	.site-content {
-		padding: 1.5em;
+	
+	.page-title,
+	.entry-title {
+		font-size: 32px;
+		font-size: 2rem;
 	}
-
-	.content-area,
+	
+	.site-content {
+		position: relative;
+	}
+	
+	.content-area, 
 	.site-content .fullwidth-content-area {
-		padding-right: 1.5em;
+		float: none;
+		width: 100%;
+		padding: 0;
+	}
+	
+	.header-main {
+		position: relative;
+	}
+	
+	.sidebar {
+		float: none;
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 1.5em;
+		background: #fff;
+		box-shadow: 0 0 5px #aaa;
+		width: 80%;
+		height: 100%;
+		overflow: auto;
+		z-index: 200;
+	}
+	
+	/* Sidebar Toggle */
+	.sidebar-navigation-toggle {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		display: inline-block;
+		padding: 1.25em 1.5em;
+		background: none;
+	}
+	
+	.sidebar-navigation-toggle:hover,
+	.sidebar-navigation-toggle:active {
+		cursor: pointer;
+	}
+	
+	.sidebar-navigation-toggle:after {
+		float: left;
+		display: inline-block;
+		font-size: 32px;
+		line-height: 1;
+		font-family: 'Genericons';
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-decoration: inherit;
+		vertical-align: middle;
+		content: '\f510';
+		color: #fff;
+	}
+	
+	.sidebar-navigation-toggle:hover:after,
+	.sidebar-navigation-toggle:active:after {
+		color: #bbb;
 	}
 
 	/*** Mobile Main Navigation ***/
 	
 	/* Reset */
+	.primary-navigation {
+		float: none;
+		margin-top: 0;
+	}
+
 	.main-navigation-menu li {
 		float: none;
 		position: static;
@@ -1727,22 +1843,24 @@ object {
 	
 	/* Main Navigation Toggle */
 	.main-navigation-toggle {
-		float: left;
+		position: absolute;
+		top: 1em;
+		left: 1em;
 		display: inline-block;
-		padding: 0.8em 1.2em;
-		background: #303030;
+		margin: 0;
+		padding: 1.25em 1.5em;
+		background: none;
 	}
 	
 	.main-navigation-toggle:hover,
 	.main-navigation-toggle:active {
 		cursor: pointer;
-		background: #ee5500;
 	}
 	
 	.main-navigation-toggle:after {
 		float: left;
 		display: inline-block;
-		font-size: 24px;
+		font-size: 32px;
 		line-height: 1;
 		font-family: 'Genericons';
 		-webkit-font-smoothing: antialiased;
@@ -1753,17 +1871,32 @@ object {
 		color: #fff;
 	}
 	
+	.main-navigation-toggle:hover:after,
+	.main-navigation-toggle:active:after {
+		color: #bbb;
+	}
+	
 	/* Main Navigation Menu */
 	.main-navigation-menu {
 		float: left;
 		width: 100%;
 		display: none;
-		border-top: 1px solid #fff;
+		border-top: 1px solid rgba(255,255,255,0.1);
+	}
+	
+	.main-navigation-menu li {
+		margin: 0;
 	}
 	
 	.main-navigation-menu a {
 		display: block;
 		clear: left;
+		font-size: 16px;
+		font-size: 1rem;
+		font-weight: bold;
+		margin: 0;
+		padding: 0.8em 0;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
 	}
 
 	.main-navigation-menu ul {
@@ -1775,9 +1908,8 @@ object {
 		width: 100%;
 	}
 	
-	.main-navigation-menu a:hover,
 	.main-navigation-menu li.current-menu-item a {
-		background: none;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
 		text-decoration: underline;
 	}
 	
@@ -1794,7 +1926,7 @@ object {
 	}
 	
 	.main-navigation-menu .submenu-dropdown-toggle:before {
-		font-size: 24px;
+		font-size: 32px;
 		line-height: 1;
 		font-family: 'Genericons';
 		-webkit-font-smoothing: antialiased;
@@ -1806,15 +1938,24 @@ object {
 	}
 	
 	.main-navigation-menu .submenu-dropdown-toggle:hover:before {
-		color: #aaa;
+		color: #bbb;
 	}
 	
 	.main-navigation-menu .submenu-dropdown-toggle.active:before {
 		content: '\f432';
 	}
 	
+	.main-navigation-menu ul .submenu-dropdown-toggle {
+		padding: 0.55em 1.2em;
+	}
+	
 	.main-navigation-menu ul .submenu-dropdown-toggle:before {
-		font-size: 20px;
+		font-size: 24px;
+		color: #333;
+	}
+	
+	.main-navigation-menu ul .submenu-dropdown-toggle:hover:before {
+		color: #666;
 	}
 	
 }
@@ -1824,60 +1965,7 @@ object {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 55em) {
 	
-	.site-content {
-		position: relative;
-		padding: 0;
-	}
-	
-	.content-area, 
-	.site-content .fullwidth-content-area {
-		float: none;
-		width: 100%;
-		padding: 1.5em;
-	}
-	
-	.sidebar {
-		float: none;
-		display: none;
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 1.8em;
-		background: #fff;
-		box-shadow: 0 0 5px #aaa;
-		width: 80%;
-		height: 100%;
-		overflow: auto;
-		z-index: 200;
-	}
-	
-	/* Sidebar Toggle */
-	.sidebar-navigation-toggle {
-		float: right;
-		display: inline-block;
-		padding: 0.8em 1.2em;
-		background: #303030;
-	}
-	
-	.sidebar-navigation-toggle:hover,
-	.sidebar-navigation-toggle:active {
-		cursor: pointer;
-		background: #ee5500;
-	}
-	
-	.sidebar-navigation-toggle:after {
-		float: left;
-		display: inline-block;
-		font-size: 24px;
-		line-height: 1;
-		font-family: 'Genericons';
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-decoration: inherit;
-		vertical-align: middle;
-		content: '\f510';
-		color: #fff;
-	}
+
 	
 }
 
@@ -1886,6 +1974,12 @@ object {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 50em) {
 	
+	.page-title,
+	.entry-title {
+		font-size: 28px;
+		font-size: 1.75rem;
+	}
+	
 	/*** Mobile Footer Navigation ***/
 	
 	.site-footer {
@@ -1893,7 +1987,7 @@ object {
 	}
 	
 	.site-footer .site-info {
-		padding: 0.9em 1.5em;
+		padding: 2em 0;
 	}
 	
 	.footer-navigation {
@@ -1907,8 +2001,8 @@ object {
 		float: right;
 		display: inline-block;
 		background: none;
-		padding: 0.9em 1.5em;
-		margin-top: -3.2em;
+		padding: 0;
+		margin-top: -3.8em;
 	}
 	
 	.footer-navigation-toggle:hover,
@@ -1922,7 +2016,7 @@ object {
 		float: left;
 		display: inline-block;
 		font-family: 'Genericons';
-		font-size: 18px;
+		font-size: 24px;
 		font-weight: normal;
 		line-height: 1;
 		-webkit-font-smoothing: antialiased;
@@ -1930,11 +2024,11 @@ object {
 		text-decoration: inherit;
 		vertical-align: middle;
 		content: '\f419';
-		color: #ee5500;
+		color: #fff;
 	}
 	
 	.footer-navigation-toggle:hover:after {
-		color: #303030;
+		color: #bbb;
 	}
 	
 	/* Footer Navigation Menu */
@@ -1942,22 +2036,14 @@ object {
 		float: left;
 		width: 100%;
 		display: none;
-		border-top: 2px solid #eee;
+		margin: 0;
+		padding: 2em 0;
+		border-top: 1px solid rgba(255,255,255,0.1);
 	}
 	
-	.footer-navigation-menu a {
-		font-size: 13px;
-		font-size: 0.8125rem;
-		padding: 0.9em;
+	.footer-navigation-menu li{
+		margin: 0 2em 0 0;
 	}
-	
-	
-	/* Magazine Homepage: Category Post Widgets */
-	.widget-category-posts-boxed .category-posts-boxed-horizontal .large-post .more-link,
-	.widget-category-posts-boxed .category-posts-boxed-horizontal .large-post .entry-meta .meta-author {
-		display: none;
-	}
-	
 }
 
 /*--------------------------------------------------------------
@@ -1965,7 +2051,19 @@ object {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 45em) {
 	
+	.site-title {
+		font-size: 32px;
+		font-size: 2rem;
+	}
 
+	.main-navigation-toggle,
+	.sidebar-navigation-toggle {
+		padding: 1em 1.25em;
+	}
+	
+	.sidebar {
+		padding: 1em;
+	}
 	
 }
 
@@ -1974,11 +2072,42 @@ object {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 40em) {
 	
+	.container {
+		padding: 0 1.5em;
+	}
+	
+	.site-content {
+		padding-top: 1.5em;
+	}
+	
+	.widget,
+	.type-post, 
+	.type-page, 
+	.type-attachment,
+	.post-pagination,
+	.comments-area {
+		margin: 0 0 1.5em 0;
+	}
+	
+	.type-post, 
+	.type-page, 
+	.type-attachment  {
+		padding: 1.5em;
+	}
+	
+	.entry-thumbnail {
+		margin: -1.5em -1.5em 0.8em;
+	}
+	
+	.entry-meta {
+		margin: 0.8em -1.5em -1.5em;
+		padding: 0.75em 1em;
+	}
+	
 	.page-title,
-	.entry-title,
-	.type-post .post-thumbnail-small + .entry-header .entry-title	{
-		font-size: 24px;
-		font-size: 1.5rem;
+	.entry-title {
+		font-size: 26px;
+		font-size: 1.625rem;
 	}
 	
 }
@@ -1988,7 +2117,28 @@ object {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 35em) {
 
+	.site-title {
+		font-size: 28px;
+		font-size: 1.75rem;
+	}
 
+	.main-navigation-toggle,
+	.sidebar-navigation-toggle {
+		padding: 1em;
+	}
+	
+	.main-navigation-toggle:after,
+	.sidebar-navigation-toggle:after {
+		font-size: 28px;
+	}
+	
+	.entry-meta .meta-date, 
+	.entry-meta .meta-author, 
+	.entry-meta .meta-category, 
+	.entry-meta .meta-comments {
+		display: block;
+		margin-right: 0;
+	}
 	
 }
 
@@ -1997,84 +2147,24 @@ object {
 --------------------------------------------------------------*/
 @media only screen and (max-width: 30em) {
 	
-	.content-area, 
-	.site-content .fullwidth-content-area {
-		padding: 1.2em;
+	.sidebar {
+		padding: 0;
 	}
 	
 	.main-navigation-toggle:after,
 	.sidebar-navigation-toggle:after {
-		font-size: 22px;
+		font-size: 24px;
 	}
 	
 	.page-title,
-	.entry-title,
-	.type-post .post-thumbnail-small + .entry-header .entry-title	{
-		font-size: 22px;
-		font-size: 1.375rem;
+	.entry-title {
+		font-size: 24px;
+		font-size: 1.5rem;
 	}
 	
 	.alignright, .alignleft {
 		float: none;
 		margin: 1em 0;
-	}
-	
-	.entry-footer-meta .meta-comments {
-		display: block;
-		float: none;
-	}
-
-	/* Mobile Main Navigation */
-	#top-navigation-toggle-tablet {
-		display: none;
-	}
-	#top-navigation-toggle-phone {
-		display: inline-block;
-	}
-	
-	/* Social Menu Dropdown */
-	.social-icons-navigation-toggle {
-		float: right;
-		display: inline-block;
-		padding: 0.8em 1.2em;
-		background: none;
-	}
-	
-	.social-icons-navigation-toggle:hover,
-	.social-icons-navigation-toggle:active,
-	.social-icons-navigation-toggle:focus {
-		cursor: pointer;
-		background: none;
-	}
-	
-	.social-icons-navigation-toggle:after {
-		float: left;
-		display: inline-block;
-		font-family: 'Genericons';
-		font-size: 18px;
-		font-weight: normal;
-		line-height: 1;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-decoration: inherit;
-		vertical-align: middle;
-		content: '\f510';
-		color: #ee5500;
-	}
-	
-	.social-icons-navigation-toggle:hover:after {
-		color: #303030;
-	}
-	
-	.header-bar .social-icons-navigation {
-		display: none;
-		border-top: 2px solid #eee;
-		width: 100%;
-	}
-	
-	.header-bar .social-icons-menu {
-		float: right;
-		width: 100%;
 	}
 	
 }
@@ -2089,18 +2179,14 @@ object {
 	}
 	
 	.site-branding .site-title {
-		font-size: 28px;
-		font-size: 1.75rem;
+		font-size: 22px;
+		font-size: 1.375rem;
 	}
 	
 	.page-title,
 	.entry-title {
-		font-size: 20px;
-		font-size: 1.25rem;
-	}
-	
-	.entry-meta span, .postinfo span {
-		display: block;
+		font-size: 22px;
+		font-size: 1.375rem;
 	}
 	
 }
@@ -2116,7 +2202,7 @@ object {
 .sidebar-left .content-area {
 	float: right;
 	padding-right: 0;
-	padding-left: 1.8em;
+	padding-left: 3em;
 }
 	
 .sidebar-left .sidebar {
@@ -2141,42 +2227,15 @@ object {
 }
 
 /*--------------------------------------------------------------
-## 15.2 - Sticky Navigation
---------------------------------------------------------------*/
-@media only screen and (min-width: 60em) {
-	.sticky-navigation .sticky-nav-menu {
-		position: fixed;
-		z-index: 100;
-		top: 0;
-		width: 100%;
-		max-width: 1190px;
-		border-bottom: 1px solid #fff;
-	}
-
-	.sticky-navigation.admin-bar .sticky-nav-menu {
-		top: 32px;
-	}
-}
-
-/*--------------------------------------------------------------
 # 16.0 - Media Query Fixes
 --------------------------------------------------------------*/
 
 /* Ensure navigation is visible on desktop view */
 @media only screen and (min-width: 60em) {
 	
-	.main-navigation-menu, .top-navigation-menu {
+	.main-navigation-menu {
 		display: block !important;
 	}
-	
-	.main-navigation-menu li.menu-item:hover a {
-		
-	}
-	
-}
-
-/* Ensure sidebar is visible on desktop view */
-@media only screen and (min-width: 55em) {
 	
 	.sidebar {
 		display: block;
@@ -2186,7 +2245,7 @@ object {
 	
 }
 
-@media only screen and (min-width: 65em) {
+@media only screen and (min-width: 70em) {
 	
 	.sidebar {
 		width: 28%;
@@ -2198,15 +2257,6 @@ object {
 @media only screen and (min-width: 50em) {
 	
 	.footer-navigation-menu {
-		display: block !important;
-	}
-	
-}
-
-/* Ensure social icons are visible on desktop view */
-@media only screen and (min-width: 30em) {
-	
-	.header-bar .social-icons-navigation {
 		display: block !important;
 	}
 	

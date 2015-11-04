@@ -6,20 +6,12 @@
  * @package zeePersonal
  */
 
-#customize-control-zeepersonal_control_latest_posts_title,
-#customize-control-zeepersonal_control_post_content,
-#customize-control-zeepersonal_control_postmeta_headline,
-#customize-control-zeepersonal_control_footermeta_headline,
-#customize-control-zeepersonal_control_slider_category,
-#customize-control-zeepersonal_control_slider_limit,
-#customize-control-zeepersonal_control_slider_animation {
+#customize-control-zeepersonal_control_post_images_headline,
+#customize-control-zeepersonal_control_post_meta_headline {
 	margin-top: 12px;
 }
 
-#customize-control-zeepersonal_control_sticky_nav_headline,
-#customize-control-zeepersonal_control_postmeta_headline,
-#customize-control-zeepersonal_control_footermeta_headline,
-#customize-control-zeepersonal_control_post_image_single_header,
-#customize-control-zeepersonal_control_slider_activate {
+#customize-control-zeepersonal_control_post_images_headline,
+#customize-control-zeepersonal_control_post_meta_headline {
 	margin-bottom: 0;
 }

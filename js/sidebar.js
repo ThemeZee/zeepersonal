@@ -52,7 +52,7 @@
 		if ( $( '.sidebar' ).length > 0 ) {
 		
 			/* Add sidebar toggle */
-			$('.main-navigation-menu').before('<button id=\"sidebar-toggle\" class=\"sidebar-navigation-toggle\"></button>');
+			$('#main-navigation').after('<button id=\"sidebar-toggle\" class=\"sidebar-navigation-toggle\"></button>');
 			
 			/* Setup Selectors */
 			var button = $('#sidebar-toggle'),
@@ -73,7 +73,7 @@
 		
 		/* Reset sidebar menu on desktop screens */
 		if(typeof matchMedia == 'function') {
-			var mq = window.matchMedia('(max-width: 55em)');
+			var mq = window.matchMedia('(max-width: 60em)');
 			mq.addListener(widthChange);
 			widthChange(mq);
 		}

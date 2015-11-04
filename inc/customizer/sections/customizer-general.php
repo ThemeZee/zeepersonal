@@ -44,39 +44,5 @@ function zeepersonal_customize_register_general_settings( $wp_customize ) {
 		)
 	);
 	
-	// Add Sticky Navigation Setting
-	$wp_customize->add_setting( 'zeepersonal_theme_options[sticky_nav_headline]', array(
-        'default'           => '',
-		'type'           	=> 'option',
-        'transport'         => 'refresh',
-        'sanitize_callback' => 'esc_attr'
-        )
-    );
-    $wp_customize->add_control( new zeePersonal_Customize_Header_Control(
-        $wp_customize, 'zeepersonal_control_sticky_nav_headline', array(
-            'label' => esc_html__( 'Sticky Navigation', 'zeepersonal' ),
-            'section' => 'zeepersonal_section_general',
-            'settings' => 'zeepersonal_theme_options[sticky_nav_headline]',
-            'priority' => 2
-            )
-        )
-    );
-	$wp_customize->add_setting( 'zeepersonal_theme_options[sticky_nav]', array(
-        'default'           => false,
-		'type'           	=> 'option',
-        'transport'         => 'refresh',
-        'sanitize_callback' => 'zeepersonal_sanitize_checkbox'
-		)
-	);
-    $wp_customize->add_control( 'zeepersonal_control_sticky_nav', array(
-        'label'    => esc_html__( 'Enable sticky menu on large screens', 'zeepersonal' ),
-        'section'  => 'zeepersonal_section_general',
-        'settings' => 'zeepersonal_theme_options[sticky_nav]',
-        'type'     => 'checkbox',
-		'priority' => 3
-		)
-	);
-
-	
 }
 add_action( 'customize_register', 'zeepersonal_customize_register_general_settings' );

@@ -35,10 +35,6 @@ function zeepersonal_customize_register_options( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	
-	// Change default background section
-	$wp_customize->get_control( 'background_color'  )->section   = 'background_image';
-	$wp_customize->get_section( 'background_image'  )->title     = esc_html__( 'Background', 'zeepersonal' );
-	
 } // zeepersonal_customize_register_options()
 add_action( 'customize_register', 'zeepersonal_customize_register_options' );
 

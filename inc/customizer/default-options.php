@@ -41,8 +41,6 @@ function zeepersonal_default_options() {
 
 	$default_options = array(
 		'layout' 							=> 'right-sidebar',
-		'sticky_nav'						=> false,
-		'header_tagline' 					=> false,
 		'post_content' 						=> 'excerpt',
 		'excerpt_length' 					=> 30,
 		'post_thumbnail_archives'			=> true,
